@@ -57,7 +57,12 @@ public class PlayerController : CharacterController
     private void Start()
     {
         planeXZ = new Plane(Vector3.up, transform.position);
-       
+        if (Input.GetJoystickNames().GetValue(0).ToString() != "")
+        {
+            hasJoystick = true;
+            GetComponent<MouseManager>().hasJoystick = true;
+        }
+
     }
 
     // Update is called once per frame

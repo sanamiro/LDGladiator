@@ -46,6 +46,7 @@ public class EnemyController : CharacterController
     public override void OnDeath()
     {
         this.gameObject.SetActive(false);
+        GameManager.OnEnemyKilled();
     }
 
     private IEnumerator AttackPlayer()

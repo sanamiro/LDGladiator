@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent navAgent;
     public Transform HeroPos;
+    public WeaponController WeaponCollision;
 
     private bool isAttacking = false;
 
@@ -37,13 +38,15 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator AttackPlayer()
     {
-        Debug.Log("tata");
         isAttacking = true;
         navAgent.speed = 0.0f;
+        WeaponCollision.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(1.5f);
+
         navAgent.speed = 2.0f;
-        Debug.Log("toto");
         isAttacking = false;
+        WeaponCollision.gameObject.SetActive(false);
     }
 
     public void OnDamaged(WeaponController weapon)

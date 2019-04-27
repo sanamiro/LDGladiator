@@ -143,4 +143,9 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector3(targetSpeed.x, 0, targetSpeed.y);
     }
+
+    public void OnDamaged(WeaponController weapon)
+    {
+        Debug.Log("Ouch ! Player has been hit");
+    }
 }

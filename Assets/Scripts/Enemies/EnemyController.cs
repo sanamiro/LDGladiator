@@ -46,6 +46,11 @@ public class EnemyController : MonoBehaviour
         isAttacking = false;
     }
 
+    public void OnDamaged(WeaponController weapon)
+    {
+        this.gameObject.SetActive(false);
+    }
+
     #region GETTER/SETTER
 
 

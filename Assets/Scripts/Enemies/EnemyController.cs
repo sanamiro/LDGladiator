@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent navAgent;
     public Transform HeroPos;
 
+    private bool isAttacking = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +29,22 @@ public class EnemyController : MonoBehaviour
     private void MoveEnemy()
     {
         navAgent.SetDestination(HeroPos.position);
+        if ((navAgent.destination - transform.position).magnitude <= 2.0f && !isAttacking)
+        {
+            StartCoroutine(AttackPlayer());
+        }
     }
 
+    private IEnumerator AttackPlayer()
+    {
+        Debug.Log("tata");
+        isAttacking = true;
+        navAgent.speed = 0.0f;
+        yield return new WaitForSeconds(1.5f);
+        navAgent.speed = 2.0f;
+        Debug.Log("toto");
+        isAttacking = false;
+    }
 
     #region GETTER/SETTER
 

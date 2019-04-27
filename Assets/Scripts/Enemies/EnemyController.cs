@@ -55,7 +55,7 @@ public class EnemyController : CharacterController
         WeaponCollision.gameObject.SetActive(true);
         WeaponCollision.transform.position = (navAgent.destination - transform.position).normalized + transform.position;
 
-        yield return new WaitForSeconds(1.5f * AttackSpeed);
+        yield return new WaitForSeconds(1.5f * AttackCD);
 
         navAgent.speed = Speed;
         isAttacking = false;

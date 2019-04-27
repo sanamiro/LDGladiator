@@ -41,6 +41,7 @@ public class EnemyController : MonoBehaviour
         isAttacking = true;
         navAgent.speed = 0.0f;
         WeaponCollision.gameObject.SetActive(true);
+        WeaponCollision.transform.position = (navAgent.destination - transform.position).normalized + transform.position;
 
         yield return new WaitForSeconds(1.5f);
 

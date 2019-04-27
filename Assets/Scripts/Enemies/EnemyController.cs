@@ -5,10 +5,18 @@ using UnityEngine.AI;
 
 public class EnemyController : CharacterController
 {
+    public enum EnemyType
+    {
+        Light,
+        Medium,
+        Heavy,
+        None
+    }
+
     public NavMeshAgent navAgent;
     public Transform HeroPos;
     public WeaponController WeaponCollision;
-    public string enemyType;
+    public EnemyType enemyType = EnemyType.None;
 
     [Header("Enemy Values")]
     public float MaxHealth;
@@ -29,7 +37,7 @@ public class EnemyController : CharacterController
     // Update is called once per frame
     void Update()
     {
-        if (enemyType != "" && !hasBeenSetUp)
+        if (enemyType != EnemyType.None && !hasBeenSetUp)
             CustomEnemy(enemyType);
         MoveEnemy();
     }
@@ -46,6 +54,7 @@ public class EnemyController : CharacterController
     public override void OnDeath()
     {
         this.gameObject.SetActive(false);
+        GameManager.OnEnemyKilled();
     }
 
     private IEnumerator AttackPlayer()
@@ -62,12 +71,12 @@ public class EnemyController : CharacterController
         WeaponCollision.gameObject.SetActive(false);
     }
 
-    private void CustomEnemy(string enemyType)
+    private void CustomEnemy(EnemyType enemyType)
     {
         hasBeenSetUp = true;
         switch (enemyType)
         {
-            case "light":
+            case EnemyType.Light:
                 DamageValue = 1;
                 MaxHealth = 100;
                 CurrentHealth = MaxHealth;
@@ -75,7 +84,7 @@ public class EnemyController : CharacterController
                 AttackCD = 1;
                 break;
 
-            case "medium":
+            case EnemyType.Medium:
                 DamageValue = 1;
                 MaxHealth = 100;
                 CurrentHealth = MaxHealth;
@@ -83,7 +92,7 @@ public class EnemyController : CharacterController
                 AttackCD = 1;
                 break;
 
-            case "heavy":
+            case EnemyType.Heavy:
                 DamageValue = 1;
                 MaxHealth = 100;
                 CurrentHealth = MaxHealth;

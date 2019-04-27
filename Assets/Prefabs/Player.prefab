@@ -95,6 +95,8 @@ MonoBehaviour:
   Speed: 400
   Animator: {fileID: 0}
   WeaponCollision: {fileID: 5166504649511678672}
+  AttackDuration: 0
+  AttackCooldown: 0
 --- !u!54 &5166504648335910145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,7 +132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5166504649511678674
 Transform:
   m_ObjectHideFlags: 0

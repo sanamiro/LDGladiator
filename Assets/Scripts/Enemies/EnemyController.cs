@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : CharacterController
 {
     public NavMeshAgent navAgent;
     public Transform HeroPos;
     public WeaponController WeaponCollision;
+    public float DamageValue;
 
     private bool isAttacking = false;
 
@@ -36,6 +37,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public override void OnDeath()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     private IEnumerator AttackPlayer()
     {
         isAttacking = true;
@@ -49,14 +55,9 @@ public class EnemyController : MonoBehaviour
         WeaponCollision.gameObject.SetActive(false);
     }
 
-    public void OnDamaged(WeaponController weapon)
-    {
-        this.gameObject.SetActive(false);
-    }
-
     #region GETTER/SETTER
 
-
+    public override float Damage { get => DamageValue; }
 
     #endregion
 }

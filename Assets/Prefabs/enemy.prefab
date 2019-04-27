@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd46b4e947894b042aed0cc3408cd503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponSide: enemy
+  Owner: {fileID: 6983864192144146953}
 --- !u!65 &4902473262006981057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -233,6 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60bc52b3092d8942a948948c118adc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
   navAgent: {fileID: 6983864192144146950}
   HeroPos: {fileID: 0}
   WeaponCollision: {fileID: 836703689203567188}
+  DamageValue: 5

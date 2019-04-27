@@ -94,11 +94,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162bd397136c6a0429007daa02229ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 20
   Speed: 400
   Animator: {fileID: 0}
   WeaponCollision: {fileID: 5166504649511678672}
   AttackDuration: 0.5
   AttackCooldown: 0.5
+  DamageValue: 6
 --- !u!54 &5166504648335910145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd46b4e947894b042aed0cc3408cd503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponSide: player
+  Owner: {fileID: 5166504648335910144}
 --- !u!65 &5166504649511678673
 BoxCollider:
   m_ObjectHideFlags: 0

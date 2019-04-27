@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : CharacterController
 {
     private enum ActionState
     {
@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public WeaponController WeaponCollision;
     public float AttackDuration;
     public float AttackCooldown;
+
+    public float DamageValue;
 
     //Movement
     private Rigidbody rigidBody;
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0)) attackTriggered = true;
-        shieldTriggered = Input.GetMouseButtonDown(0);
+        shieldTriggered = Input.GetMouseButtonDown(1);
 
         if (state != ActionState.Attack)
         {
@@ -139,13 +141,19 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public override void OnDeath()
+    {
+        Debug.Log(":/");
+    }
+
     private void Move(Vector2 targetSpeed)
     {
         rigidBody.velocity = new Vector3(targetSpeed.x, 0, targetSpeed.y);
     }
+    
+    #region GETTER/SETTER
 
-    public void OnDamaged(WeaponController weapon)
-    {
-        Debug.Log("Ouch ! Player has been hit");
-    }
+    public override float Damage { get => DamageValue; }
+
+    #endregion
 }

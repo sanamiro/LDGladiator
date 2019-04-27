@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-
-    public string WeaponSide;
+    
+    public CharacterController Owner;
 
     private void OnTriggerEnter(Collider col)
     {
-        if (WeaponSide == "player")
+        if (Owner is PlayerController)
         {
             EnemyController enemy = col.GetComponent<EnemyController>();
             if (enemy != null)
@@ -18,9 +18,8 @@ public class WeaponController : MonoBehaviour
             }
         }
 
-        if (WeaponSide == "enemy")
+        if (Owner is EnemyController)
         {
-            Debug.Log("testouille");
             PlayerController player = col.GetComponent<PlayerController>();
             if (player != null)
             {
@@ -28,5 +27,10 @@ public class WeaponController : MonoBehaviour
             }
         }
 
+    }
+
+    public float Damage
+    {
+        get => Owner.Damage;
     }
 }

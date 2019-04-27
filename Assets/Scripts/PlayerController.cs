@@ -30,6 +30,8 @@ public class PlayerController : CharacterController
     private Plane planeXZ;
     private bool attackTriggered = false;
     private bool shieldTriggered = false;
+    private bool hasJoystick = false;
+    private float triggerint = 0;
     private ActionState state = ActionState.None;
     private float attackTimer;
     private int comboState = 0;
@@ -51,31 +53,66 @@ public class PlayerController : CharacterController
     private void Start()
     {
         planeXZ = new Plane(Vector3.up, transform.position);
+        if (Input.GetJoystickNames().GetValue(0).ToString() != "")
+        {
+            hasJoystick = true;
+            GetComponent<MouseManager>().hasJoystick = true;
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        targetVelocity.x = Input.GetAxisRaw("Horizontal");
-        targetVelocity.y = Input.GetAxisRaw("Vertical");
-        targetVelocity.Normalize();
-        if (Animator != null)
+        if (!hasJoystick)
         {
-            Animator.SetFloat("SpeedX", targetVelocity.x);
-            Animator.SetFloat("SpeedY", targetVelocity.y);
-        }
-
-        if (Input.GetMouseButtonDown(0)) attackTriggered = true;
-        shieldTriggered = Input.GetMouseButton(1);
-
-        if (state != ActionState.Attack)
-        {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            float dist;
-            if (planeXZ.Raycast(mouseRay, out dist))
+            targetVelocity.x = Input.GetAxisRaw("Horizontal");
+            targetVelocity.y = Input.GetAxisRaw("Vertical");
+            targetVelocity.Normalize();
+            if (Animator != null)
             {
-                transform.LookAt(mouseRay.GetPoint(dist));
+                Animator.SetFloat("SpeedX", targetVelocity.x);
+                Animator.SetFloat("SpeedY", targetVelocity.y);
+            }
+
+            if (Input.GetMouseButtonDown(0)) attackTriggered = true;
+            shieldTriggered = Input.GetMouseButton(1);
+
+            if (state != ActionState.Attack)
+            {
+                Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                float dist;
+                if (planeXZ.Raycast(mouseRay, out dist))
+                {
+                    transform.LookAt(mouseRay.GetPoint(dist));
+                }
+            }
+        }
+        else
+        {
+            targetVelocity.x = -Input.GetAxis("LeftAnalogX1");
+            targetVelocity.y = Input.GetAxis("LeftAnalogY1");
+            targetVelocity.Normalize();
+            if (Animator != null)
+            {
+                Animator.SetFloat("SpeedX", targetVelocity.x);
+                Animator.SetFloat("SpeedY", targetVelocity.y);
+            }
+            if (Input.GetAxis("RT1") >= 0.9f && triggerint == 0)
+                triggerint++;
+
+            if (Input.GetButtonDown("A1") || Input.GetButtonDown("X1") || triggerint == 1) attackTriggered = true;
+            shieldTriggered = (Input.GetButton("B1") || Input.GetButton("Y1") || Mathf.Abs(Input.GetAxis("LT1")) <= -0.9f);
+            if (Input.GetAxis("RT1") <= 0.1f && triggerint == 2)
+                triggerint = 0;
+
+            if (state != ActionState.Attack)
+            {
+                Vector3 direction = new Vector3(-Input.GetAxis("RightAnalogX1"), 0, Input.GetAxis("RightAnalogY1"));
+
+                Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
+                transform.rotation = rotation;
+
             }
         }
     }
@@ -96,12 +133,15 @@ public class PlayerController : CharacterController
         switch (state)
         {
             case ActionState.None:
+                
                 if (shieldTriggered)
                 {
                     state = ActionState.Parry;
                 }
                 else if (attackTimer <= 0 && attackTriggered)
                 {
+                    if (triggerint == 1)
+                        triggerint++;
                     comboState = 1;
                     attackTriggered = false;
                     state = ActionState.Attack;

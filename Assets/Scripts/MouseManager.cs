@@ -16,6 +16,7 @@ public class MouseManager : MonoBehaviour
     public float Threshold = 0.1f;
     public bool Top = false;
     public bool Left = false;
+    public bool hasJoystick = false;
 
     public MousePos CurrentMousePos
     {
@@ -49,8 +50,19 @@ public class MouseManager : MonoBehaviour
             Cursor.visible = true;
         }
 
-        float dx = Input.GetAxis("Mouse X");
-        float dy = Input.GetAxis("Mouse Y");
+        float dx;
+        float dy;
+
+        if (hasJoystick == false)
+        {
+            dx = Input.GetAxis("Mouse X");
+            dy = Input.GetAxis("Mouse Y");
+        }
+        else
+        {
+            dx = -Input.GetAxis("RightAnalogX1") * 10;
+            dy = Input.GetAxis("RightAnalogY1") * 10;
+        }
 
         if (Mathf.Abs(dx) > Threshold)
         {

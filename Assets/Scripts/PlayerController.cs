@@ -36,6 +36,11 @@ public class PlayerController : CharacterController
 
     private MouseManager mouseManager;
 
+    [Space]
+    [Header("Sons")]
+    public AudioClip sonHit1;
+    public AudioClip sonGetHit1;
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -102,6 +107,8 @@ public class PlayerController : CharacterController
                     state = ActionState.Attack;
                     attackTimer = AttackCooldown;
                     WeaponCollision.gameObject.SetActive(true);
+
+                    SoundManager.instance.RandomizeSfx(sonHit1);
                 }
                 break;
             case ActionState.Attack:
@@ -159,6 +166,7 @@ public class PlayerController : CharacterController
             if (angleFromShield < shieldSize / 2)
                 return;
         }
+        SoundManager.instance.RandomizeSfx(sonGetHit1);
         base.OnDamaged(weapon);
     }
 

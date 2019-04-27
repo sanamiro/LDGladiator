@@ -19,6 +19,7 @@ public class PlayerController : CharacterController
     public float AttackCooldown;
 
     public float DamageValue;
+    public float shieldSize = 100;
 
     //Movement
     private Rigidbody rigidBody;
@@ -33,9 +34,12 @@ public class PlayerController : CharacterController
     private float attackTimer;
     private int comboState = 0;
 
+    private MouseManager mouseManager;
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
+        mouseManager = GetComponent<MouseManager>();
     }
 
     // Start is called before the first frame update
@@ -57,7 +61,7 @@ public class PlayerController : CharacterController
         }
 
         if (Input.GetMouseButtonDown(0)) attackTriggered = true;
-        shieldTriggered = Input.GetMouseButtonDown(1);
+        shieldTriggered = Input.GetMouseButton(1);
 
         if (state != ActionState.Attack)
         {
@@ -75,7 +79,7 @@ public class PlayerController : CharacterController
     {
         float currentSpeed = Speed;
 
-        if (state == ActionState.Parry) currentSpeed /= 2;
+        if (state == ActionState.Parry || state == ActionState.Attack) currentSpeed /= 2;
 
         Move(targetVelocity * currentSpeed * Time.fixedDeltaTime);
 
@@ -83,14 +87,15 @@ public class PlayerController : CharacterController
         {
             attackTimer -= Time.fixedDeltaTime;
         }
-        switch(state)
+
+        switch (state)
         {
             case ActionState.None:
                 if (shieldTriggered)
                 {
                     state = ActionState.Parry;
                 }
-                else if (attackTriggered)
+                else if (attackTimer <= 0 && attackTriggered)
                 {
                     comboState = 1;
                     attackTriggered = false;
@@ -102,12 +107,12 @@ public class PlayerController : CharacterController
             case ActionState.Attack:
                 if (attackTimer <= 0)
                 {
-                    state = ActionState.AttackCooldown;
+                    state = ActionState.None;
                     attackTimer = AttackDuration;
                     WeaponCollision.gameObject.SetActive(false);
                 }
                 break;
-            case ActionState.AttackCooldown:
+            /*case ActionState.AttackCooldown:  /// For combo
                 if (attackTimer <= 0)
                 {
                     if (attackTriggered)
@@ -130,7 +135,7 @@ public class PlayerController : CharacterController
                         comboState = 0;
                     }
                 }
-                break;
+                break;*/
             case ActionState.Parry:
                 if (!shieldTriggered)
                 {
@@ -138,7 +143,23 @@ public class PlayerController : CharacterController
                 }
                 break;
         }
-        
+
+    }
+
+    public override void OnDamaged(WeaponController weapon)
+    {
+        if (state == ActionState.Parry)
+        {
+            Vector3 attackerDir = weapon.Owner.transform.position - transform.position;
+            float angleFromShield = Vector2.Angle(new Vector2(attackerDir.x, attackerDir.z), mouseManager.MouseDir);
+
+            Debug.DrawRay(transform.position, attackerDir * 10, Color.red, 1);
+            //Hit the shield
+            Debug.Log(angleFromShield);
+            if (angleFromShield < shieldSize / 2)
+                return;
+        }
+        base.OnDamaged(weapon);
     }
 
     public override void OnDeath()

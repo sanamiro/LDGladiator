@@ -10,7 +10,7 @@ public abstract class CharacterController : MonoBehaviour
 
     protected virtual float Armor { get => 1.0f; }
 
-    public void OnDamaged(WeaponController weapon)
+    public virtual void OnDamaged(WeaponController weapon)
     {
         Health -= weapon.Damage / Armor;
         if (Health <= 0) OnDeath();

@@ -8,24 +8,30 @@ public class EnemyController : CharacterController
     public NavMeshAgent navAgent;
     public Transform HeroPos;
     public WeaponController WeaponCollision;
+    public string enemyType;
+
+    [Header("Enemy Values")]
+    public float MaxHealth;
+    public float CurrentHealth;
     public float DamageValue;
+    public float Speed;
+    public float AttackCD;
 
     private bool isAttacking = false;
+    private bool hasBeenSetUp = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (enemyType != "" && !hasBeenSetUp)
+            CustomEnemy(enemyType);
         MoveEnemy();
-    }
-
-    public void UpdateHeroPosition(Transform newPos)
-    {
-        HeroPos = newPos;
     }
 
     private void MoveEnemy()
@@ -49,11 +55,45 @@ public class EnemyController : CharacterController
         WeaponCollision.gameObject.SetActive(true);
         WeaponCollision.transform.position = (navAgent.destination - transform.position).normalized + transform.position;
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f * AttackSpeed);
 
-        navAgent.speed = 2.0f;
+        navAgent.speed = Speed;
         isAttacking = false;
         WeaponCollision.gameObject.SetActive(false);
+    }
+
+    private void CustomEnemy(string enemyType)
+    {
+        hasBeenSetUp = true;
+        switch (enemyType)
+        {
+            case "light":
+                DamageValue = 1;
+                MaxHealth = 100;
+                CurrentHealth = MaxHealth;
+                Speed = 1;
+                AttackCD = 1;
+                break;
+
+            case "medium":
+                DamageValue = 1;
+                MaxHealth = 100;
+                CurrentHealth = MaxHealth;
+                Speed = 1;
+                AttackCD = 1;
+                break;
+
+            case "heavy":
+                DamageValue = 1;
+                MaxHealth = 100;
+                CurrentHealth = MaxHealth;
+                Speed = 1;
+                AttackCD = 1;
+                break;
+
+            default:
+                break;
+        }
     }
 
     #region GETTER/SETTER

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private bool shieldTriggered = false;
     private ActionState state = ActionState.None;
     private float attackTimer;
+    private int comboState = 0;
 
     private void Awake()
     {
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (attackTriggered)
                 {
+                    comboState = 1;
                     attackTriggered = false;
                     state = ActionState.Attack;
                     attackTimer = AttackCooldown;
@@ -106,7 +108,25 @@ public class PlayerController : MonoBehaviour
             case ActionState.AttackCooldown:
                 if (attackTimer <= 0)
                 {
-                    state = ActionState.None;
+                    if (attackTriggered)
+                    {
+                        comboState++;
+                        if (comboState >= 4)
+                        {
+                            comboState = 1;
+                        }
+                        attackTriggered = false;
+                        state = ActionState.Attack;
+                        attackTimer = AttackCooldown;
+                        WeaponCollision.gameObject.SetActive(true);
+                        if (Animator != null)
+                            Animator.SetInteger("ComboState", comboState);
+                    }
+                    else
+                    {
+                        state = ActionState.None;
+                        comboState = 0;
+                    }
                 }
                 break;
             case ActionState.Parry:

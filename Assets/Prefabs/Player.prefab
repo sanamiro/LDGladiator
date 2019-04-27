@@ -96,8 +96,8 @@ MonoBehaviour:
   Speed: 400
   Animator: {fileID: 0}
   WeaponCollision: {fileID: 5166504649511678672}
-  AttackDuration: 0
-  AttackCooldown: 0
+  AttackDuration: 0.5
+  AttackCooldown: 0.5
 --- !u!54 &5166504648335910145
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class PlayerController : CharacterController
 
     public float BaseSpeed;
     public Animator Animator;
-    public WeaponController WeaponCollision;
+    public UseableWeaponController WeaponCollision;
     public float AttackDuration;
     public float AttackCooldown;
     
@@ -159,7 +159,7 @@ public class PlayerController : CharacterController
                     attackTriggered = false;
                     state = ActionState.Attack;
                     attackTimer = AttackCooldown;
-                    WeaponCollision.gameObject.SetActive(true);
+                    WeaponCollision.StartUseWeapon(WeaponCollision.transform.position, Vector3.zero);
                     launchRandomSound(sonAttack);
                 }
                 break;
@@ -168,7 +168,7 @@ public class PlayerController : CharacterController
                 {
                     state = ActionState.None;
                     attackTimer = AttackDuration;
-                    WeaponCollision.gameObject.SetActive(false);
+                    WeaponCollision.StopUseWeapon();
 
                 }
                 break;

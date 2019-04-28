@@ -18,7 +18,7 @@ public class Wave
     public List<EnemyData> Enemies;
 }
 
-[CreateAssetMenu()]
+[CreateAssetMenu(fileName = "Level x")]
 public class Stage : ScriptableObject
 {
     public List<Wave> Waves = new List<Wave>() { new Wave() };

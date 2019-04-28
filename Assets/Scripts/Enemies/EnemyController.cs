@@ -10,12 +10,14 @@ public class EnemyController : CharacterController
         Light,
         Medium,
         Heavy,
+        Ranged,
         None
     }
 
     public NavMeshAgent navAgent;
     public Transform HeroPos;
-    public WeaponController WeaponCollision;
+    public UseableWeaponController MeleeWeapon;
+    public UseableWeaponController RangedWeapon;
     public EnemyType enemyType = EnemyType.None;
 
     [Header("Enemy Values")]
@@ -25,6 +27,7 @@ public class EnemyController : CharacterController
     public float Speed;
     public float AttackCD;
 
+    private UseableWeaponController weaponCollision;
     private bool isAttacking = false;
     private bool hasBeenSetUp = false;
 
@@ -45,7 +48,7 @@ public class EnemyController : CharacterController
     private void MoveEnemy()
     {
         navAgent.SetDestination(HeroPos.position);
-        if ((navAgent.destination - transform.position).magnitude <= 2.0f && !isAttacking)
+        if (!navAgent.pathPending && navAgent.remainingDistance <= navAgent.stoppingDistance /*(navAgent.destination - transform.position).magnitude <= 2.0f*/ && !isAttacking)
         {
             StartCoroutine(AttackPlayer());
         }
@@ -61,19 +64,20 @@ public class EnemyController : CharacterController
     {
         isAttacking = true;
         navAgent.speed = 0.0f;
-        WeaponCollision.gameObject.SetActive(true);
-        WeaponCollision.transform.position = (navAgent.destination - transform.position).normalized + transform.position;
+        Vector3 dir = (navAgent.destination - transform.position).normalized;
+        weaponCollision.StartUseWeapon(transform.position + dir + Vector3.up, dir);
 
         yield return new WaitForSeconds(1.5f * AttackCD);
 
+        weaponCollision.StopUseWeapon();
         navAgent.speed = Speed;
         isAttacking = false;
-        WeaponCollision.gameObject.SetActive(false);
     }
 
     private void CustomEnemy(EnemyType enemyType)
     {
         hasBeenSetUp = true;
+        weaponCollision = MeleeWeapon;
         switch (enemyType)
         {
             case EnemyType.Light:
@@ -98,6 +102,16 @@ public class EnemyController : CharacterController
                 CurrentHealth = MaxHealth;
                 Speed = 1;
                 AttackCD = 1;
+                break;
+
+            case EnemyType.Ranged:
+                DamageValue = 1;
+                MaxHealth = 100;
+                CurrentHealth = MaxHealth;
+                Speed = 1;
+                AttackCD = 1;
+                navAgent.stoppingDistance = 8;
+                weaponCollision = RangedWeapon;
                 break;
 
             default:

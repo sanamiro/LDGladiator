@@ -12,13 +12,12 @@ public class PlayerController : CharacterController
         None
     }
 
-    public float Speed;
+    public float BaseSpeed;
     public Animator Animator;
     public WeaponController WeaponCollision;
     public float AttackDuration;
     public float AttackCooldown;
-
-    public float DamageValue;
+    
     public float shieldSize = 100;
 
     //Movement
@@ -27,6 +26,14 @@ public class PlayerController : CharacterController
     private Vector2 targetVelocity = Vector2.zero;
 
     //Attack
+    private EquipmentInfo equipment = new EquipmentInfo()
+    { //Default value
+        swordLevel = 0,
+        armorLevel = 0,
+        sandalLevel = 0,
+        capeLevel = 0
+    };
+
     private Plane planeXZ;
     private bool attackTriggered = false;
     private bool shieldTriggered = false;
@@ -59,6 +66,7 @@ public class PlayerController : CharacterController
         planeXZ = new Plane(Vector3.up, transform.position);
         if (Input.GetJoystickNames().Length != 0 && Input.GetJoystickNames().GetValue(0).ToString() != "")
         {
+            Debug.Log("Joystick detected");
             hasJoystick = true;
             GetComponent<MouseManager>().hasJoystick = true;
         }
@@ -124,10 +132,10 @@ public class PlayerController : CharacterController
 
     private void FixedUpdate()
     {
-        float currentSpeed = Speed;
+        float currentSpeed = BaseSpeed * (1 + equipment.SpeedBonus);
 
         if (state == ActionState.Parry || state == ActionState.Attack) currentSpeed /= 2;
-
+        
         Move(targetVelocity * currentSpeed * Time.fixedDeltaTime);
 
         if (attackTimer > 0)
@@ -206,9 +214,8 @@ public class PlayerController : CharacterController
             float angleFromShield = Vector2.Angle(new Vector2(attackerDir.x, attackerDir.z), mouseManager.MouseDir);
 
             Debug.DrawRay(transform.position, attackerDir * 10, Color.red, 1);
-            //Hit the shield
-            Debug.Log(angleFromShield);
-            if (angleFromShield < shieldSize / 2)
+            
+            if (angleFromShield < shieldSize / 2) //Hit the shield
                 return;
         }
         if (base.Health > 0)
@@ -233,10 +240,12 @@ public class PlayerController : CharacterController
     {
         SoundManager.instance.PlaySingle(listeDeSons[Random.Range(0, listeDeSons.Length)]);
     }
-    
+
     #region GETTER/SETTER
 
-    public override float Damage { get => DamageValue; }
+    protected override float Armor { get => equipment.Armor; }
+    public override float Damage { get => equipment.SwordDamage; }
+    public EquipmentInfo Equipment { get => equipment; set => equipment = value; }
 
     #endregion
 }

@@ -42,7 +42,7 @@ public static class GameManager
 
             //Reset Player Attributes
             player.Health = playerHealth;
-            //player.Equipment = playerEquipment;
+            player.Equipment = playerEquipment;
         }
     }
 
@@ -112,12 +112,20 @@ public static class GameManager
     private static void OnWinStage()
     {
         playerHealth = player.Health;
-        //playerEquipment = player.Equipment;
+        playerEquipment = player.Equipment;
 
         //Load Marchant scene
         //SceneManager.LoadScene("Store");
 
         LoadNextStage();
     }
+
+    // Shop
+    public static void HealPlayer(float regeneration)
+    {
+        playerHealth += regeneration;
+    }
+
+    public static EquipmentInfo PlayerEquipment { get => playerEquipment; }
 
 }

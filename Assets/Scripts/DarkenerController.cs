@@ -10,6 +10,7 @@ public class DarkenerController : MonoBehaviour
     public Image darkenerImage;
     public bool isGoingDark = false;
     public bool isGoingLight = false;
+    public bool isGoingMiddle = false;
 
     void Start()
     {
@@ -23,6 +24,8 @@ public class DarkenerController : MonoBehaviour
             InDarkener();
         else if (isGoingLight)
             OutDarkener();
+        else if (isGoingMiddle)
+            MiddleDarkener();
     }
 
     public void InDarkener()
@@ -52,6 +55,21 @@ public class DarkenerController : MonoBehaviour
         else
         {
             Color newColor = new Color(0, 0, 0, currentGamma - 0.05f);
+            darkenerImage.color = newColor;
+        }
+    }
+
+    public void MiddleDarkener()
+    {
+        float currentGamma = darkenerImage.color.a;
+        if (currentGamma >= 0.5f)
+        {
+            Debug.Log("MiddleDarkenerOver");
+            isGoingMiddle = false;
+        }
+        else
+        {
+            Color newColor = new Color(0, 0, 0, currentGamma + 0.025f);
             darkenerImage.color = newColor;
         }
     }

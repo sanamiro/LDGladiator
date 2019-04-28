@@ -31,12 +31,6 @@ public class EnemyController : CharacterController
     private bool isAttacking = false;
     private bool hasBeenSetUp = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

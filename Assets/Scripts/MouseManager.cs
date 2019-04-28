@@ -34,6 +34,12 @@ public class MouseManager : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     // Update is called once per frame
     void Update()
     {

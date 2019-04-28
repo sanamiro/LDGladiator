@@ -1,5 +1,15 @@
 ﻿
 
+public enum ItemType
+{
+    Sword,
+    Armor,
+    Sandal,
+    Cape,
+    TheWoodenSword,
+    Heal
+}
+
 public static class EquipmentStats
 {
     public static float GetDamage(int sword)
@@ -102,6 +112,52 @@ public static class EquipmentStats
             default: return 0;
         }
     }
+
+    public static int WoodenSwordPrice = 100;
+    public static string WoodenSwordName = "The Ultimate Wooden Sword";
+    public static string WoodenSwordDesc = "The Ultimate Wooden Sword";
+
+    public static string GetSwordName(int level)
+    {
+        return "Sword " + level;
+    }
+
+    public static string GetArmorName(int level)
+    {
+        return "Armor " + level;
+    }
+
+    public static string GetSandalName(int level)
+    {
+        return "Sandal " + level;
+    }
+
+    public static string GetCapeName(int level)
+    {
+        return "Cape " + level;
+    }
+
+
+
+    public static string GetSwordDesc(int level)
+    {
+        return "Sword " + level;
+    }
+
+    public static string GetArmorDesc(int level)
+    {
+        return "Armor " + level;
+    }
+
+    public static string GetSandalDesc(int level)
+    {
+        return "Sandal " + level;
+    }
+
+    public static string GetCapeDesc(int level)
+    {
+        return "Cape " + level;
+    }
 }
 
 public static class HealingItemStats
@@ -132,5 +188,15 @@ public static class HealingItemStats
 
             default: return 0;
         }
+    }
+
+    public static string GetName(int level)
+    {
+        return "Potion " + level;
+    }
+
+    public static string GetDesc(int level)
+    {
+        return "Potion " + level;
     }
 }

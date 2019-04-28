@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4893692660209957514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6777267839819744038}
+  - component: {fileID: 5790440077266363001}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6777267839819744038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893692660209957514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8577335, y: -16.603983, z: -45.46415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5790440077266363001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893692660209957514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b663f0821b19840a9993d33ba8f178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 9a8d781aa4720a2409676ae5531c5149, type: 2}
+  playCutoffFreq: 0
+  pauseCutoffFreq: 0
+  playVolume: 0
+  pauseVolume: 0
+  fadeDuration: 0
+  crossFadeDuration: 0
+  sounds:
+  - name: ig player attack
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 1
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig player die
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig player footstep
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig player get hit
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig player shield get hit
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig player shield up
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig music
+    mixerGroup: {fileID: -4376154885723963321, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig music open the door
+    mixerGroup: {fileID: 3261736241137844026, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: 
+    mixerGroup: {fileID: 0}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: 
+    mixerGroup: {fileID: 0}
+    loop: 0
+    volume: 0
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  appearingAnimationIsFinished: 0
+  disapearingLevelAnimationIsFinished: 0

@@ -14,7 +14,7 @@ public class PlayerController : CharacterController
 
     public float BaseSpeed;
     public Animator Animator;
-    public WeaponController WeaponCollision;
+    public UseableWeaponController WeaponCollision;
     public float AttackDuration;
     public float AttackCooldown;
     
@@ -159,8 +159,8 @@ public class PlayerController : CharacterController
                     attackTriggered = false;
                     state = ActionState.Attack;
                     attackTimer = AttackCooldown;
-                    WeaponCollision.gameObject.SetActive(true);
-                    launchRandomSound(sonAttack);
+                    WeaponCollision.StartUseWeapon(WeaponCollision.transform.position, Vector3.zero);
+                    launchRandomSound("ig player attack");
                 }
                 break;
             case ActionState.Attack:
@@ -168,7 +168,7 @@ public class PlayerController : CharacterController
                 {
                     state = ActionState.None;
                     attackTimer = AttackDuration;
-                    WeaponCollision.gameObject.SetActive(false);
+                    WeaponCollision.StopUseWeapon();
 
                 }
                 break;
@@ -220,7 +220,7 @@ public class PlayerController : CharacterController
         }
         if (base.Health > 0)
         {
-            launchRandomSound(sonGetHit);
+            launchRandomSound("ig player get hit");
         }
         base.OnDamaged(weapon);
     }
@@ -228,7 +228,7 @@ public class PlayerController : CharacterController
     public override void OnDeath()
     {
         Debug.Log(":/");
-        SoundManager.instance.PlaySingle(sonDeath);
+        AudioManager.instance.Play("ig player die");
     }
 
     private void Move(Vector2 targetSpeed)
@@ -236,9 +236,9 @@ public class PlayerController : CharacterController
         rigidBody.velocity = new Vector3(targetSpeed.x, 0, targetSpeed.y);
     }
 
-    private void launchRandomSound(AudioClip[] listeDeSons)
+    private void launchRandomSound(string nomDuSon)
     {
-        SoundManager.instance.PlaySingle(listeDeSons[Random.Range(0, listeDeSons.Length)]);
+        AudioManager.instance.Play(nomDuSon);
     }
 
     #region GETTER/SETTER

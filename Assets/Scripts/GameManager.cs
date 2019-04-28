@@ -13,7 +13,10 @@ public static class GameManager
     public static List<Stage> stages;
 
     private static PlayerController player;
+    private static MouseManager mouseManager;
     private static EnemySpawner spawner;
+    private static DarkenerController darkener;
+    private static GameObject gameOverView;
 
     // Player info
     private static float playerHealth = MaxHealth;
@@ -36,6 +39,12 @@ public static class GameManager
 
     private static int killCount;
     private static int killsNeededForNextWave;
+
+    public static void RestartGame()
+    {
+        currentStage = -2;
+        LoadNextStage();
+    }
 
     public static void InitGame()
     {
@@ -66,14 +75,18 @@ public static class GameManager
         else
         {
             //Open Arena Scene
-            SceneManager.LoadScene("EnemyScene"); //TODO Change to "BattleArena"
+            SceneManager.LoadScene("BattleArena");
         }
     }
 
     private static void InitStage()
     {
         player = UnityEngine.Object.FindObjectOfType<PlayerController>();
+        mouseManager = UnityEngine.Object.FindObjectOfType<MouseManager>();
         spawner = UnityEngine.Object.FindObjectOfType<EnemySpawner>();
+        darkener = UnityEngine.Object.FindObjectOfType<DarkenerController>();
+        gameOverView = GameObject.Find("GameOverView");
+        gameOverView.SetActive(false);
         waveCount = stages[currentStage].Waves.Count;
         bonusMoney = 0;
         currentWave = 0;
@@ -124,6 +137,19 @@ public static class GameManager
 
         //Load Marchant scene
         SceneManager.LoadScene("Shop");
+    }
+
+    public static void OnPlayerDie()
+    {
+        darkener.isGoingMiddle = true;
+        mouseManager.enabled = false;
+        
+        foreach (CharacterController controller in UnityEngine.Object.FindObjectsOfType<CharacterController>())
+        {
+            controller.enabled = false;
+        }
+
+        gameOverView.SetActive(true);
     }
 
     // Shop

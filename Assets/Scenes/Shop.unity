@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12220037, g: 0.12257549, b: 0.12116669, a: 1}
+  m_IndirectSpecularColor: {r: 0.122200124, g: 0.122575074, b: 0.12116647, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -545,6 +545,8 @@ MonoBehaviour:
   items:
   - {fileID: 973384721}
   - {fileID: 8594356838892630453}
+  - {fileID: 1963682721}
+  - {fileID: 2069348615}
 --- !u!114 &323036989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3037,12 +3039,12 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1012686553}
+  m_TargetGraphic: {fileID: 1338620629}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 323036988}
-        m_MethodName: Buy
+        m_MethodName: QuitShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3349,10 +3351,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Darkener
       objectReference: {fileID: 0}
-    - target: {fileID: 1600613622189090, guid: 89b0e4de0108c8444b41b468ebc886df, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224914492401695424, guid: 89b0e4de0108c8444b41b468ebc886df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3457,26 +3455,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114469677505131510, guid: 89b0e4de0108c8444b41b468ebc886df,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114469677505131510, guid: 89b0e4de0108c8444b41b468ebc886df,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114469677505131510, guid: 89b0e4de0108c8444b41b468ebc886df,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114469677505131510, guid: 89b0e4de0108c8444b41b468ebc886df,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89b0e4de0108c8444b41b468ebc886df, type: 3}
@@ -4372,6 +4350,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 824569e52220baa4da14689f25c2a053, type: 3}
+--- !u!114 &1963682721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8615462529613458438, guid: 824569e52220baa4da14689f25c2a053,
+    type: 3}
+  m_PrefabInstance: {fileID: 1963682720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90d77a5d6817a2458f7b5d914b340fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2018067823
 GameObject:
   m_ObjectHideFlags: 0
@@ -4867,6 +4857,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 824569e52220baa4da14689f25c2a053, type: 3}
+--- !u!114 &2069348615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8615462529613458438, guid: 824569e52220baa4da14689f25c2a053,
+    type: 3}
+  m_PrefabInstance: {fileID: 2069348614}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90d77a5d6817a2458f7b5d914b340fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2088837715
 GameObject:
   m_ObjectHideFlags: 0

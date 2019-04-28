@@ -117,7 +117,7 @@ public static class GameManager
         }
     }
 
-    private static void OnWinStage()
+    public static void OnWinStage()
     {
         playerHealth = player.Health;
         playerEquipment = player.Equipment;

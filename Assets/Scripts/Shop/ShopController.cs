@@ -14,6 +14,8 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI ItemName;
     public TextMeshProUGUI ItemInfo;
     public Button BuyButton;
+    public Button QuitButton;
+    public DarkenerController Darkener;
 
     public List<ShopItem> items;
 
@@ -26,6 +28,7 @@ public class ShopController : MonoBehaviour
         items.ForEach(item => item.UpdateState(this));
         BuyButton.interactable = false;
         UpdatePlayerData();
+        Darkener.isGoingLight = true;
     }
 
     public void UpdatePlayerData()
@@ -60,6 +63,12 @@ public class ShopController : MonoBehaviour
             UpdatePlayerData();
             BuyButton.interactable = false;
         }
+    }
+
+    public void QuitShop()
+    {
+        Darkener.currentScene = "shop";
+        Darkener.isGoingDark = true;
     }
 
     public ShopState State { get => state; }

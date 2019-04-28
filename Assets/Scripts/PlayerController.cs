@@ -14,6 +14,7 @@ public class PlayerController : CharacterController
 
     public float BaseSpeed;
     public Animator Animator;
+    public AnimatorController animController;
     public UseableWeaponController WeaponCollision;
     public float AttackDuration;
     public float AttackCooldown;
@@ -38,6 +39,8 @@ public class PlayerController : CharacterController
     private bool attackTriggered = false;
     private bool shieldTriggered = false;
     private bool hasJoystick = false;
+    private bool looksRight = false;
+    private bool isRunning = false;
     private float triggerint = 0;
     private ActionState state = ActionState.None;
     private float attackTimer;
@@ -64,7 +67,7 @@ public class PlayerController : CharacterController
     private void Start()
     {
         planeXZ = new Plane(Vector3.up, transform.position);
-        if (Input.GetJoystickNames().Length != 0 && Input.GetJoystickNames().GetValue(0).ToString() != "")
+        if (Input.GetJoystickNames().Length != 0 || Input.GetJoystickNames().GetValue(0).ToString() != "")
         {
             Debug.Log("Joystick detected");
             hasJoystick = true;
@@ -90,43 +93,60 @@ public class PlayerController : CharacterController
             if (Input.GetMouseButtonDown(0)) attackTriggered = true;
             shieldTriggered = Input.GetMouseButton(1);
 
-            if (state != ActionState.Attack)
+            if (Input.GetAxisRaw("Horizontal") < 0 && !looksRight && !!shieldTriggered)
             {
-                Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                this.transform.Rotate(new Vector3(0, 1, 0), 180);
+                looksRight = true;
+            }
+            else if (Input.GetAxisRaw("Horizontal") > 0 && looksRight && !shieldTriggered)
+            {
+                this.transform.Rotate(new Vector3(0, 1, 0), 180);
+                looksRight = false;
+            }
 
-                float dist;
-                if (planeXZ.Raycast(mouseRay, out dist))
-                {
-                    transform.LookAt(mouseRay.GetPoint(dist));
-                }
+            if (targetVelocity.magnitude == 0 && isRunning)
+            {
+                animController.changeRunningAnimation();
+                isRunning = false;
+            }
+            else if (targetVelocity.magnitude != 0 && !isRunning)
+            {
+                animController.changeRunningAnimation();
+                isRunning = true;
             }
         }
+
         else
         {
-            targetVelocity.x = -Input.GetAxis("LeftAnalogX1");
-            targetVelocity.y = Input.GetAxis("LeftAnalogY1");
+            targetVelocity.x = -Input.GetAxisRaw("Horizontal");
+            targetVelocity.y = -Input.GetAxisRaw("Vertical");
             targetVelocity.Normalize();
             if (Animator != null)
             {
                 Animator.SetFloat("SpeedX", targetVelocity.x);
                 Animator.SetFloat("SpeedY", targetVelocity.y);
             }
+
+            if (Input.GetAxisRaw("Horizontal") < 0 && !looksRight && !shieldTriggered)
+            {
+                this.transform.Rotate(new Vector3(0, 1, 0), 180);
+                looksRight = true;
+            }
+            else if (Input.GetAxisRaw("Horizontal") > 0 && looksRight && !shieldTriggered)
+            {
+                this.transform.Rotate(new Vector3(0, 1, 0), 180);
+                looksRight = false;
+            }
+
             if (Input.GetAxis("RT1") >= 0.9f && triggerint == 0)
                 triggerint++;
 
             if (Input.GetButtonDown("A1") || Input.GetButtonDown("X1") || triggerint == 1) attackTriggered = true;
+
             shieldTriggered = (Input.GetButton("B1") || Input.GetButton("Y1") || Input.GetAxis("LT1") <= -0.9f);
+
             if (Input.GetAxis("RT1") <= 0.1f && triggerint == 2)
                 triggerint = 0;
-
-            if (state != ActionState.Attack)
-            {
-                Vector3 direction = new Vector3(-Input.GetAxis("RightAnalogX1"), 0, Input.GetAxis("RightAnalogY1"));
-
-                Quaternion rotation = Quaternion.LookRotation(direction, Vector3.up);
-                transform.rotation = rotation;
-
-            }
         }
     }
 
@@ -135,14 +155,14 @@ public class PlayerController : CharacterController
         float currentSpeed = BaseSpeed * (1 + equipment.SpeedBonus);
 
         if (state == ActionState.Parry || state == ActionState.Attack) currentSpeed /= 2;
-        
+
         Move(targetVelocity * currentSpeed * Time.fixedDeltaTime);
 
         if (attackTimer > 0)
         {
             attackTimer -= Time.fixedDeltaTime;
         }
-
+        
         switch (state)
         {
             case ActionState.None:
@@ -150,6 +170,7 @@ public class PlayerController : CharacterController
                 if (shieldTriggered)
                 {
                     state = ActionState.Parry;
+                    animController.blockAnimation();
                 }
                 else if (attackTimer <= 0 && attackTriggered)
                 {
@@ -160,6 +181,7 @@ public class PlayerController : CharacterController
                     state = ActionState.Attack;
                     attackTimer = AttackCooldown;
                     WeaponCollision.StartUseWeapon(WeaponCollision.transform.position, Vector3.zero);
+                    animController.attackAnimation();
                     launchRandomSound("ig player attack");
                 }
                 break;

@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Level 6
   m_EditorClassIdentifier: 
   Waves:
-  - Enemies: []
+  - Enemies:
+    - EnemyType: 1
+      Count: 2
+    - EnemyType: 2
+      Count: 1

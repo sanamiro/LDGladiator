@@ -19,56 +19,46 @@ public class CameraController : MonoBehaviour
         float newX = PlayerPos.position.x;
         float newZ = PlayerPos.position.z;
 
-        /*if (Mathf.Pow((newX / 19), 2) + Mathf.Pow((newZ / 15), 2) > 1)         //Si on sort de l'ellipse voulue
+        if (Mathf.Pow((newX / 15), 2) + Mathf.Pow((newZ / 10), 2) > 1)         //Si on sort de l'ellipse voulue
         {
-            if (newX <= 0 && newZ != 0)                                         //Si on est à gauche du centre (y positifs)
+
+            newPos = new Vector3(PlayerPos.position.x, 20, PlayerPos.position.z + 30);
+
+            if (newX < 0)                                         //Si on est à gauche du centre (y positifs)
             {
                 float x = newX;
-                float y = (newX / newZ) * x;
-                while (Mathf.Pow((x / 19), 2) + Mathf.Pow((y / 15), 2) > 1)
+                float y = (newZ / newX) * x;
+                while (Mathf.Pow((x / 15), 2) + Mathf.Pow((y / 10), 2) > 1)
                 {
-                    x += 0.1f;
-                    y = (newX / newZ) * x;
+                    x += 0.01f;
+                    y = (newZ / newX) * x;
+                }
+                newPos.x = x;
+                newPos.z = (newZ / newX) * x + 30;
+            }
+
+            else if (newX > 0)                                    //Si on est à droite du centre (x positifs)
+            {
+                float x = newX;
+                float y = (newZ / newX) * x;
+                while (Mathf.Pow((x / 15), 2) + Mathf.Pow((y / 10), 2) > 1)
+                {
+                    x -= 0.01f;
+                    y = (newZ / newX) * x;
                 }
 
                 newPos.x = x;
-                newPos.z = (newX / newZ) * x + 30;
+                newPos.z = (newZ / newX) * x + 30;
             }
 
-            else if (newX >= 0 && newZ != 0)                                    //Si on est à droite du centre (x positifs)
-            {
-                float x = newX;
-                float y = (newX / newZ) * x;
-                while (Mathf.Pow((x / 19), 2) + Mathf.Pow((y / 15), 2) > 1)
-                {
-                    x -= 0.1f;
-                    y = (newX / newZ) * x;
-                }
-
-                newPos.x = x;
-                newPos.z = (newX / newZ) * x + 30;
-            }
-
-            else if (newX <= 0 && newZ == 0)                                    //Si on est sur l'axe des abcisses (x+ ou x-)
-                newPos = new Vector3(22, 0, 30);
-            else if (newX >= 0 && newZ == 0)
-                newPos = new Vector3(-22, 0, 30);
+            else if (newZ <= 0 && newX == 0)                                    //Si on est sur l'axe des abcisses (x+ ou x-)
+                newPos = new Vector3(0, 0, 45);
+            else if (newX >= 0 && newX == 0)
+                newPos = new Vector3(0, 0, 15);
+                
         }
         else
-            newPos = new Vector3(PlayerPos.position.x, 20, PlayerPos.position.z + 30);*/
-
-        if (newX <= -15)
-            newX = -15;
-        if (newX >= 15)
-            newX = 15;
-
-        if (newZ <= -15)
-            newZ = -15;
-        if (newZ >= 10)
-            newZ = 10;
-
-        newPos.x = newX;
-        newPos.z = newZ + 30;
+            newPos = new Vector3(PlayerPos.position.x, 20, PlayerPos.position.z + 30);
 
         transform.position = newPos;
     }

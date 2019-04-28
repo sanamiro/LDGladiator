@@ -96,12 +96,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 20
-  Speed: 400
+  BaseSpeed: 400
   Animator: {fileID: 0}
   WeaponCollision: {fileID: 5166504649511678672}
   AttackDuration: 0.5
   AttackCooldown: 0.5
-  DamageValue: 6
   shieldSize: 100
   sonAttack:
   - {fileID: 8300000, guid: 8e1d038d0b2b22b4aa6900d2b1e39fb1, type: 3}

@@ -29,12 +29,20 @@ public static class GameManager
     private static int killCount;
     private static int killsNeededForNextWave;
 
-    public static void InitFirstStage()
+    public static void InitGame()
     {
         if (currentStage == -1)
         {
             currentStage = 0;
             InitStage();
+        }
+        else
+        {
+            InitStage();
+
+            //Reset Player Attributes
+            player.Health = playerHealth;
+            //player.Equipment = playerEquipment;
         }
     }
 
@@ -45,17 +53,12 @@ public static class GameManager
         if (currentStage >= stages.Count)
         {
             //TODO Fin ?
+            Debug.Log("No more stages");
         }
         else
         {
             //Open Arena Scene
-            
-            SceneManager.LoadScene("BattleArena");
-            InitStage();
-
-            //Reset Player Attributes
-            player.Health = playerHealth;
-            //player.Equipment = playerEquipment;
+            SceneManager.LoadScene("EnemyScene"); //TODO Change to "BattleArena"
         }
     }
 
@@ -112,7 +115,9 @@ public static class GameManager
         //playerEquipment = player.Equipment;
 
         //Load Marchant scene
-        SceneManager.LoadScene("Store");
+        //SceneManager.LoadScene("Store");
+
+        LoadNextStage();
     }
 
 }

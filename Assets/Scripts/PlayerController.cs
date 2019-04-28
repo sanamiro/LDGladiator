@@ -40,8 +40,12 @@ public class PlayerController : CharacterController
 
     [Space]
     [Header("Sons")]
-    public AudioClip sonHit1;
-    public AudioClip sonGetHit1;
+    public AudioClip[] sonAttack = new AudioClip[5];
+    public AudioClip[] sonGetHit = new AudioClip[4];
+    public AudioClip[] sonFootStep = new AudioClip[4];
+    public AudioClip[] sonShieldGetHit = new AudioClip[5];
+    public AudioClip[] sonShieldUp = new AudioClip[2];
+    public AudioClip sonDeath;
 
     private void Awake()
     {
@@ -58,6 +62,7 @@ public class PlayerController : CharacterController
             hasJoystick = true;
             GetComponent<MouseManager>().hasJoystick = true;
         }
+
     }
 
     // Update is called once per frame
@@ -147,8 +152,7 @@ public class PlayerController : CharacterController
                     state = ActionState.Attack;
                     attackTimer = AttackCooldown;
                     WeaponCollision.gameObject.SetActive(true);
-
-                    SoundManager.instance.RandomizeSfx(sonHit1);
+                    launchRandomSound(sonAttack);
                 }
                 break;
             case ActionState.Attack:
@@ -157,6 +161,7 @@ public class PlayerController : CharacterController
                     state = ActionState.None;
                     attackTimer = AttackDuration;
                     WeaponCollision.gameObject.SetActive(false);
+
                 }
                 break;
             /*case ActionState.AttackCooldown:  /// For combo
@@ -206,18 +211,27 @@ public class PlayerController : CharacterController
             if (angleFromShield < shieldSize / 2)
                 return;
         }
-        SoundManager.instance.RandomizeSfx(sonGetHit1);
+        if (base.Health > 0)
+        {
+            launchRandomSound(sonGetHit);
+        }
         base.OnDamaged(weapon);
     }
 
     public override void OnDeath()
     {
         Debug.Log(":/");
+        SoundManager.instance.PlaySingle(sonDeath);
     }
 
     private void Move(Vector2 targetSpeed)
     {
         rigidBody.velocity = new Vector3(targetSpeed.x, 0, targetSpeed.y);
+    }
+
+    private void launchRandomSound(AudioClip[] listeDeSons)
+    {
+        SoundManager.instance.PlaySingle(listeDeSons[Random.Range(0, listeDeSons.Length)]);
     }
     
     #region GETTER/SETTER

@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("Need some code here");
+        GameManager.RestartGame();
     }
 
     public void QuitGame()

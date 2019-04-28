@@ -16,6 +16,7 @@ public class ShopController : MonoBehaviour
     public Button BuyButton;
     public Button QuitButton;
     public DarkenerController Darkener;
+    public SelectOnInput selector;
 
     public List<ShopItem> items;
 
@@ -62,6 +63,9 @@ public class ShopController : MonoBehaviour
             items.ForEach(item => item.UpdateState(this));
             UpdatePlayerData();
             BuyButton.interactable = false;
+            items[0].Selected = true;
+            selector.enabled = false;
+            selector.enabled = true;
         }
     }
 

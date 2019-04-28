@@ -227,8 +227,8 @@ public class PlayerController : CharacterController
 
     public override void OnDeath()
     {
-        Debug.Log(":/");
         AudioManager.instance.Play("ig player die");
+        GameManager.OnPlayerDie();
     }
 
     private void Move(Vector2 targetSpeed)

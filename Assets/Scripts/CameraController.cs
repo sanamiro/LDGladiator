@@ -19,8 +19,6 @@ public class CameraController : MonoBehaviour
         float newX = PlayerPos.position.x;
         float newZ = PlayerPos.position.z;
 
-        Debug.Log(newZ);
-
         if (Mathf.Pow((newX / 15), 2) + Mathf.Pow((newZ / 10), 2) > 1)         //Si on sort de l'ellipse voulue
         {
             if (!(newX <= 0.01f && -0.01f <= newX))

@@ -120,4 +120,12 @@ public static class GameManager
         LoadNextStage();
     }
 
+    // Shop
+    public static void HealPlayer(float regeneration)
+    {
+        playerHealth += regeneration;
+    }
+
+    public static EquipmentInfo PlayerEquipment { get => playerEquipment; }
+
 }

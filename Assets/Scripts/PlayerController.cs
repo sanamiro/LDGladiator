@@ -147,6 +147,17 @@ public class PlayerController : CharacterController
 
             if (Input.GetAxis("RT1") <= 0.1f && triggerint == 2)
                 triggerint = 0;
+            
+            if (targetVelocity.magnitude == 0 && isRunning)
+            {
+                animController.changeRunningAnimation();
+                isRunning = false;
+            }
+            else if (targetVelocity.magnitude != 0 && !isRunning)
+            {
+                animController.changeRunningAnimation();
+                isRunning = true;
+            }
         }
     }
 
@@ -222,6 +233,7 @@ public class PlayerController : CharacterController
                 if (!shieldTriggered)
                 {
                     state = ActionState.None;
+                    animController.endAnimation();
                 }
                 break;
         }

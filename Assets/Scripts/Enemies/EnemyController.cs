@@ -16,6 +16,8 @@ public class EnemyController : CharacterController
 
     public NavMeshAgent navAgent;
     public Transform HeroPos;
+    public AnimatorController animController;
+    public Animator animator;
     public UseableWeaponController MeleeWeapon;
     public UseableWeaponController RangedWeapon;
     public EnemyType enemyType = EnemyType.None;
@@ -29,6 +31,8 @@ public class EnemyController : CharacterController
 
     private UseableWeaponController weaponCollision;
     private bool isAttacking = false;
+    private bool isRunning = false;
+    private bool looksRight = false;
     private bool hasBeenSetUp = false;
 
     // Update is called once per frame
@@ -37,11 +41,28 @@ public class EnemyController : CharacterController
         if (enemyType != EnemyType.None && !hasBeenSetUp)
             CustomEnemy(enemyType);
         MoveEnemy();
+
+        if (navAgent.destination.x - transform.position.x > 0 && !looksRight)
+        {
+            this.transform.Rotate(new Vector3(0, 1, 0), 180);
+            looksRight = true;
+        }
+        if (navAgent.destination.x - transform.position.x < 0 && looksRight)
+        {
+            this.transform.Rotate(new Vector3(0, 1, 0), 180);
+            looksRight = false;
+        }
     }
 
     private void MoveEnemy()
     {
         navAgent.SetDestination(HeroPos.position);
+        if (!isRunning && !isAttacking)
+        {
+            animator.SetTrigger("run_cycle");
+            isRunning = true;
+        }
+
         if (!navAgent.pathPending && navAgent.remainingDistance <= navAgent.stoppingDistance /*(navAgent.destination - transform.position).magnitude <= 2.0f*/ && !isAttacking)
         {
             StartCoroutine(AttackPlayer());
@@ -56,10 +77,13 @@ public class EnemyController : CharacterController
 
     private IEnumerator AttackPlayer()
     {
+        animator.SetTrigger("idle");
         isAttacking = true;
+        isRunning = false;
         navAgent.speed = 0.0f;
         Vector3 dir = (navAgent.destination - transform.position).normalized;
         weaponCollision.StartUseWeapon(transform.position + dir + Vector3.up, dir);
+        animController.attackAnimation();
 
         yield return new WaitForSeconds(1.5f * AttackCD);
 

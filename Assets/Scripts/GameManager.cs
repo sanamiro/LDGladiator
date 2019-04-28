@@ -8,15 +8,23 @@ using UnityEngine.SceneManagement;
 
 public static class GameManager
 {
+    public static readonly float MaxHealth = 100;
+
     public static List<Stage> stages;
 
     private static PlayerController player;
     private static EnemySpawner spawner;
 
     // Player info
-    private static float playerHealth;
-    private static int playerMoney;
-    private static EquipmentInfo playerEquipment;
+    private static float playerHealth = MaxHealth;
+    private static int playerMoney = 20;
+    private static EquipmentInfo playerEquipment = new EquipmentInfo()
+    { //Default value
+        swordLevel = 0,
+        armorLevel = 0,
+        sandalLevel = 0,
+        capeLevel = 0
+    };
 
     // Stage Info
     private static int currentStage = -1;
@@ -115,17 +123,25 @@ public static class GameManager
         playerEquipment = player.Equipment;
 
         //Load Marchant scene
-        //SceneManager.LoadScene("Store");
-
-        LoadNextStage();
+        SceneManager.LoadScene("Shop");
     }
 
     // Shop
     public static void HealPlayer(float regeneration)
     {
         playerHealth += regeneration;
+        if (playerHealth > MaxHealth)
+        {
+            playerHealth = MaxHealth;
+        }
     }
 
-    public static EquipmentInfo PlayerEquipment { get => playerEquipment; }
+    public static void SpendMoney(int amount)
+    {
+        playerMoney -= amount;
+    }
 
+    public static float PlayerHealth { get => playerHealth; }
+    public static EquipmentInfo PlayerEquipment { get => playerEquipment; }
+    public static int PlayerMoney { get => playerMoney; }
 }

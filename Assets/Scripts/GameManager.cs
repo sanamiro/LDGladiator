@@ -42,8 +42,8 @@ public static class GameManager
 
     public static void RestartGame()
     {
-        currentStage = -2;
-        LoadNextStage();
+        currentStage = -1;
+        SceneManager.LoadScene("BattleArena");
     }
 
     public static void InitGame()

@@ -11,6 +11,7 @@ public class DarkenerController : MonoBehaviour
     public bool isGoingDark = false;
     public bool isGoingLight = false;
     public bool isGoingMiddle = false;
+    public string currentScene = "";
 
     void Start()
     {
@@ -33,8 +34,11 @@ public class DarkenerController : MonoBehaviour
         float currentGamma = darkenerImage.color.a;
         if (currentGamma >= 0.99f)
         {
-            Debug.Log("InDarkenerOver");
             isGoingDark = false;
+            if (currentScene == "battle")
+                GameManager.OnWinStage();
+            else if (currentScene == "shop")
+                GameManager.LoadNextStage();
         }
         else
         {
@@ -49,7 +53,6 @@ public class DarkenerController : MonoBehaviour
 
         if (currentGamma <= 0.01f)
         {
-            Debug.Log("OutDarkenerOver");
             isGoingLight = false;
         }
         else
@@ -64,7 +67,6 @@ public class DarkenerController : MonoBehaviour
         float currentGamma = darkenerImage.color.a;
         if (currentGamma >= 0.5f)
         {
-            Debug.Log("MiddleDarkenerOver");
             isGoingMiddle = false;
         }
         else

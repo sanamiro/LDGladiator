@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 public enum ItemType
 {
     Sword,
@@ -185,6 +187,19 @@ public static class HealingItemStats
             case 2: return 6;
             case 3: return 11;
             case 4: return 15;
+
+            default: return 0;
+        }
+    }
+
+    public static int GetAvailableCount(int level)
+    {
+        switch (level)
+        {
+            case 1: return 3;
+            case 2: return 3;
+            case 3: return 2;
+            case 4: return 2;
 
             default: return 0;
         }

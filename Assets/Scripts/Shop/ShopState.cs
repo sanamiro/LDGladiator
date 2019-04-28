@@ -7,26 +7,25 @@ using System.Threading.Tasks;
 public class ShopState
 {
     /// <summary>
-    /// The number of stages to wait before the healing item is available
+    /// The number of popo available healing item available
     /// </summary>
-    private readonly int[] healingItemStates = new int[HealingItemStats.MaxLevel];
+    private readonly int[] healingItemCounts = new int[HealingItemStats.MaxLevel];
+
+    public ShopState()
+    {
+        for (int i = 0; i < HealingItemStats.MaxLevel; i++)
+        {
+            healingItemCounts[i] = HealingItemStats.GetAvailableCount(i + 1);
+        }
+    }
 
     public void ConsumeHealingItem(int level)
     {
-        healingItemStates[level - 1] = 2;
+        healingItemCounts[level - 1]--;
     }
 
     public bool IsHealingItemAvailable(int level)
     {
-        return healingItemStates[level - 1] <= 0;
-    }
-
-    public void OnStagePassed()
-    {
-        for (int i = 0; i < HealingItemStats.MaxLevel; i++)
-        {
-            if (healingItemStates[i] > 0)
-                healingItemStates[i]--;
-        }
+        return healingItemCounts[level - 1] > 0;
     }
 }

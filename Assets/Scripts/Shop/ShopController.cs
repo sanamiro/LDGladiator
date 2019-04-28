@@ -13,6 +13,7 @@ public class ShopController : MonoBehaviour
     // Item Description
     public TextMeshProUGUI ItemName;
     public TextMeshProUGUI ItemInfo;
+    public TextMeshProUGUI ItemPrice;
     public Button BuyButton;
     public Button QuitButton;
     public DarkenerController Darkener;
@@ -25,11 +26,10 @@ public class ShopController : MonoBehaviour
 
     private void Start()
     {
-        state.OnStagePassed();
         items.ForEach(item => item.UpdateState(this));
-        BuyButton.interactable = false;
         UpdatePlayerData();
         Darkener.isGoingLight = true;
+        Select(items[0]);
     }
 
     public void UpdatePlayerData()
@@ -45,10 +45,12 @@ public class ShopController : MonoBehaviour
 
         ItemName.text = item.ItemName;
         ItemInfo.text = item.ItemDesc;
+        ItemPrice.text = item.Price.ToString();
 
         if (selectedItem != null)
         {
             selectedItem.Selected = true;
+            selector.eventSystem.SetSelectedGameObject(item.Button.gameObject);
             BuyButton.interactable = selectedItem.Price <= GameManager.PlayerMoney;
         }
         else BuyButton.interactable = false;
@@ -62,10 +64,10 @@ public class ShopController : MonoBehaviour
             selectedItem.OnBuy();
             items.ForEach(item => item.UpdateState(this));
             UpdatePlayerData();
-            BuyButton.interactable = false;
-            items[0].Selected = true;
-            selector.enabled = false;
-            selector.enabled = true;
+            if (!selectedItem.Available)
+                Select(items[0]);
+            /*selector.enabled = false;
+            selector.enabled = true;*/
         }
     }
 

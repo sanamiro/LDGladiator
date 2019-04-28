@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour
@@ -159,6 +160,7 @@ public class ShopItem : MonoBehaviour
     {
         set
         {
+
         }
     }
 
@@ -172,4 +174,5 @@ public class ShopItem : MonoBehaviour
         }
     }
 
+    public Button Button { get => button; }
 }

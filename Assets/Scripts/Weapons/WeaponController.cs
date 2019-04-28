@@ -14,7 +14,11 @@ public class WeaponController : MonoBehaviour
             EnemyController enemy = col.GetComponent<EnemyController>();
             if (enemy != null)
             {
-                enemy.OnDamaged(this);
+                OnDamage(enemy);
+            }
+            else if (col.GetComponent<PlayerController>() == null)
+            {
+                OnCollide(col);
             }
         }
 
@@ -23,11 +27,23 @@ public class WeaponController : MonoBehaviour
             PlayerController player = col.GetComponent<PlayerController>();
             if (player != null)
             {
-                player.OnDamaged(this);
+                OnDamage(player);
+            }
+            else if (col.GetComponent<EnemyController>() == null)
+            {
+                OnCollide(col);
             }
         }
 
     }
+
+    protected virtual void OnDamage(CharacterController character)
+    {
+        character.OnDamaged(this);
+    }
+
+    protected virtual void OnCollide(Collider com)
+    { }
 
     public float Damage
     {

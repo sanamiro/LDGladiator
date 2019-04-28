@@ -111,7 +111,9 @@ public static class GameManager
         killCount = 0;
         if (currentWave >= waveCount)
         {
-            OnWinStage();
+            // Call on win stage
+            darkener.currentScene = "battle";
+            darkener.isGoingDark = true;
         }
         else
         {

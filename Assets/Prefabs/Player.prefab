@@ -96,12 +96,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 20
-  Speed: 400
+  BaseSpeed: 400
   Animator: {fileID: 0}
   WeaponCollision: {fileID: 5166504649511678672}
   AttackDuration: 0.5
   AttackCooldown: 0.5
-  DamageValue: 6
+  shieldSize: 100
+  sonAttack:
+  - {fileID: 8300000, guid: 8e1d038d0b2b22b4aa6900d2b1e39fb1, type: 3}
+  - {fileID: 8300000, guid: dd1ba1961a477a94c9ffaefa2adeabdf, type: 3}
+  - {fileID: 8300000, guid: a96e9cf09fab7e3488f89bd4613d339c, type: 3}
+  - {fileID: 8300000, guid: a3208c11aa4dd54449f86cc328dbf118, type: 3}
+  - {fileID: 8300000, guid: 7b98f27b2b09e7541881cd613fe7378f, type: 3}
+  - {fileID: 8300000, guid: d07ba175404b1c54cb07a0759c1d29ee, type: 3}
+  sonGetHit:
+  - {fileID: 8300000, guid: 1decea76a41ca394ca87fe8f195d606d, type: 3}
+  - {fileID: 8300000, guid: 2e91fd7996e0cd54583f5c052505113b, type: 3}
+  - {fileID: 8300000, guid: ae067f82973c21d4ba952326f4c2c0d6, type: 3}
+  - {fileID: 8300000, guid: ad55428edf3dec54c9fc4e7b38ae0dbd, type: 3}
+  sonFootStep:
+  - {fileID: 8300000, guid: ab08feff3b06d5a46b3b88b2b35f5e50, type: 3}
+  - {fileID: 8300000, guid: 333dfd64d471ca0408533de803c126f8, type: 3}
+  - {fileID: 8300000, guid: 20f7678d926afa849a77886a7d499857, type: 3}
+  - {fileID: 8300000, guid: b34f78c99751068478d74dbe8b180afe, type: 3}
+  sonShieldGetHit:
+  - {fileID: 8300000, guid: 0ef5243c83c204140bdf8c47b2d8125e, type: 3}
+  - {fileID: 8300000, guid: f11f62b135bb0af4fa00adff7e7c1dc8, type: 3}
+  - {fileID: 8300000, guid: 06a34b9bfd6ef14458209c8ab6e0a57b, type: 3}
+  - {fileID: 8300000, guid: 4e3355266c1bb114681a6ea1dd870639, type: 3}
+  - {fileID: 8300000, guid: 0b9e1ff5e5a54344d8757496f16d13f9, type: 3}
+  sonShieldUp:
+  - {fileID: 8300000, guid: 31095fa433f7cf14fb5ff61999eb1e54, type: 3}
+  - {fileID: 8300000, guid: 7de46e2e4aa8cbd4492e08444d126c9a, type: 3}
+  sonDeath: {fileID: 8300000, guid: efa9ccc5481a1004182da1b9f5b69ac2, type: 3}
 --- !u!54 &5166504648335910145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168,6 +195,7 @@ MonoBehaviour:
   Threshold: 1.2
   Top: 0
   Left: 0
+  hasJoystick: 0
 --- !u!1 &5166504649511678675
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5166504649511678674
 Transform:
   m_ObjectHideFlags: 0
@@ -256,7 +284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5166504649511678675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd46b4e947894b042aed0cc3408cd503, type: 3}
+  m_Script: {fileID: 11500000, guid: 6474fdfd8a794394e8349de26e4cefb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 5166504648335910144}

@@ -20,7 +20,7 @@ public static class GameManager
 
     // Player info
     private static float playerHealth = MaxHealth;
-    private static int playerMoney = 20;
+    private static int playerMoney = 0;
     private static EquipmentInfo playerEquipment = new EquipmentInfo()
     { //Default value
         swordLevel = 0,
@@ -88,7 +88,7 @@ public static class GameManager
         gameOverView = GameObject.Find("GameOverView");
         gameOverView.SetActive(false);
         waveCount = stages[currentStage].Waves.Count;
-        bonusMoney = 0;
+        bonusMoney = 10;
         currentWave = 0;
         LoadWave();
     }
@@ -133,7 +133,17 @@ public static class GameManager
     public static void OnWinStage()
     {
         playerHealth = player.Health;
+        for (int j = 1; j <= currentStage; j++)
+        {
+            bonusMoney += bonusMoney / 4;
+        }
+        for (int i = 0; i < 5 - (int)Mathf.Floor(PlayerHealth / 20); i++)
+        {
+            bonusMoney += bonusMoney / 2;
+        }
+        playerMoney += bonusMoney;
         playerEquipment = player.Equipment;
+
 
         //Load Marchant scene
         SceneManager.LoadScene("Shop");

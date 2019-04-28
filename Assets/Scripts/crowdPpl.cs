@@ -12,16 +12,29 @@ public class crowdPpl : MonoBehaviour
     private SpriteRenderer spriteRendererHead;
 
     private Animator animator;
+    [Space]
+    [Header("Rajouter du delai a l'activation?")]
+    public bool delayBeforeActivation = false;
+    public float minDelay = 0.10f;
+    public float maxDelay = 0.20f;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         animator = GetComponent<Animator>();
         spriteRendererBody = GetComponent<SpriteRenderer>();
         spriteRendererHead = transform.Find("Crowd head").GetComponent<SpriteRenderer>();
         spriteRendererHead.sprite = head[Random.Range(0, head.Length)];
         spriteRendererBody.color = couleursRandomPourBody[Random.Range(0, couleursRandomPourBody.Count)];
+        
+        if (delayBeforeActivation)
+        {
+            Invoke("enableTheScriptWithDelay", Random.Range(minDelay, maxDelay));
+        }
+    }
+    void enableTheScriptWithDelay()
+    {
         int randAnimationBody = Random.Range(0, amountOfBodyAnimation);
-        if (randAnimationBody+1 == 1)
+        if (randAnimationBody + 1 == 1)
         {
             animator.SetBool("corps 1", true);
         }

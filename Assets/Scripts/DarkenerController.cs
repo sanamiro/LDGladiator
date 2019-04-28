@@ -9,7 +9,7 @@ public class DarkenerController : MonoBehaviour
 
     public Image darkenerImage;
     public bool isGoingDark = false;
-    public bool isGoingLight = false;
+    public bool isGoingLight = true;
     public bool isGoingMiddle = false;
     public string currentScene = "";
 

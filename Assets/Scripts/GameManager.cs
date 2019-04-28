@@ -50,6 +50,9 @@ public static class GameManager
     {
         if (currentStage == -1)
         {
+            playerMoney = 0;
+            playerHealth = MaxHealth;
+            playerEquipment = new EquipmentInfo();
             currentStage = 0;
             InitStage();
         }

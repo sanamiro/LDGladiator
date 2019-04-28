@@ -13,11 +13,14 @@ public static class GameManager
     public static List<Stage> stages;
 
     private static PlayerController player;
+    private static MouseManager mouseManager;
     private static EnemySpawner spawner;
+    private static DarkenerController darkener;
+    private static GameObject gameOverView;
 
     // Player info
     private static float playerHealth = MaxHealth;
-    private static int playerMoney = 20;
+    private static int playerMoney = 0;
     private static EquipmentInfo playerEquipment = new EquipmentInfo()
     { //Default value
         swordLevel = 0,
@@ -37,10 +40,19 @@ public static class GameManager
     private static int killCount;
     private static int killsNeededForNextWave;
 
+    public static void RestartGame()
+    {
+        currentStage = -2;
+        LoadNextStage();
+    }
+
     public static void InitGame()
     {
         if (currentStage == -1)
         {
+            playerMoney = 0;
+            playerHealth = MaxHealth;
+            playerEquipment = new EquipmentInfo();
             currentStage = 0;
             InitStage();
         }
@@ -66,16 +78,20 @@ public static class GameManager
         else
         {
             //Open Arena Scene
-            SceneManager.LoadScene("EnemyScene"); //TODO Change to "BattleArena"
+            SceneManager.LoadScene("BattleArena");
         }
     }
 
     private static void InitStage()
     {
         player = UnityEngine.Object.FindObjectOfType<PlayerController>();
+        mouseManager = UnityEngine.Object.FindObjectOfType<MouseManager>();
         spawner = UnityEngine.Object.FindObjectOfType<EnemySpawner>();
+        darkener = UnityEngine.Object.FindObjectOfType<DarkenerController>();
+        gameOverView = GameObject.Find("GameOverView");
+        gameOverView.SetActive(false);
         waveCount = stages[currentStage].Waves.Count;
-        bonusMoney = 0;
+        bonusMoney = 10;
         currentWave = 0;
         LoadWave();
     }
@@ -120,10 +136,33 @@ public static class GameManager
     public static void OnWinStage()
     {
         playerHealth = player.Health;
+        for (int j = 1; j <= currentStage; j++)
+        {
+            bonusMoney += bonusMoney / 4;
+        }
+        for (int i = 0; i < 5 - (int)Mathf.Floor(PlayerHealth / 20); i++)
+        {
+            bonusMoney += bonusMoney / 2;
+        }
+        playerMoney += bonusMoney;
         playerEquipment = player.Equipment;
+
 
         //Load Marchant scene
         SceneManager.LoadScene("Shop");
+    }
+
+    public static void OnPlayerDie()
+    {
+        darkener.isGoingMiddle = true;
+        mouseManager.enabled = false;
+        
+        foreach (CharacterController controller in UnityEngine.Object.FindObjectsOfType<CharacterController>())
+        {
+            controller.enabled = false;
+        }
+
+        gameOverView.SetActive(true);
     }
 
     // Shop

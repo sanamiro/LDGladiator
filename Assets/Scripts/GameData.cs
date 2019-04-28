@@ -15,4 +15,9 @@ public class GameData : MonoBehaviour
         GameManager.InitGame();
     }
 
+    public void RestartGame()
+    {
+        GameManager.RestartGame();
+    }
+
 }

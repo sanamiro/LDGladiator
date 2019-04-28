@@ -53,7 +53,7 @@ public class PlayerController : CharacterController
     private void Start()
     {
         planeXZ = new Plane(Vector3.up, transform.position);
-        if (Input.GetJoystickNames().GetValue(0).ToString() != "")
+        if (Input.GetJoystickNames().Length != 0 && Input.GetJoystickNames().GetValue(0).ToString() != "")
         {
             hasJoystick = true;
             GetComponent<MouseManager>().hasJoystick = true;
@@ -102,7 +102,7 @@ public class PlayerController : CharacterController
                 triggerint++;
 
             if (Input.GetButtonDown("A1") || Input.GetButtonDown("X1") || triggerint == 1) attackTriggered = true;
-            shieldTriggered = (Input.GetButton("B1") || Input.GetButton("Y1") || Mathf.Abs(Input.GetAxis("LT1")) <= -0.9f);
+            shieldTriggered = (Input.GetButton("B1") || Input.GetButton("Y1") || Input.GetAxis("LT1") <= -0.9f);
             if (Input.GetAxis("RT1") <= 0.1f && triggerint == 2)
                 triggerint = 0;
 

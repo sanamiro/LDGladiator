@@ -12,7 +12,7 @@ public class GameData : MonoBehaviour
     private void Awake()
     {
         GameManager.stages = stages;
-        GameManager.InitFirstStage();
+        GameManager.InitGame();
     }
 
 }

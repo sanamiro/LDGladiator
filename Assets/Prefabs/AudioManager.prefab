@@ -56,11 +56,11 @@ MonoBehaviour:
       type: 2}
     loop: 0
     volume: 1
-    followingSounds: 1
-    randomSounds: 0
+    followingSounds: 0
+    randomSounds: 1
     currentIndex: 0
     rndIndex: 0
-    clipsNumber: 0
+    clipsNumber: 7
     clip: {fileID: 0}
     multipleClips: []
     source: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0
+    volume: 1
     followingSounds: 0
     randomSounds: 0
     currentIndex: 0
@@ -81,12 +81,12 @@ MonoBehaviour:
     mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0
+    volume: 0.82
     followingSounds: 0
-    randomSounds: 0
+    randomSounds: 1
     currentIndex: 0
     rndIndex: 0
-    clipsNumber: 0
+    clipsNumber: 4
     clip: {fileID: 0}
     multipleClips: []
     source: {fileID: 0}
@@ -94,12 +94,12 @@ MonoBehaviour:
     mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0
-    followingSounds: 0
+    volume: 1
+    followingSounds: 1
     randomSounds: 0
     currentIndex: 0
     rndIndex: 0
-    clipsNumber: 0
+    clipsNumber: 4
     clip: {fileID: 0}
     multipleClips: []
     source: {fileID: 0}
@@ -108,11 +108,11 @@ MonoBehaviour:
       type: 2}
     loop: 0
     volume: 0
-    followingSounds: 0
+    followingSounds: 1
     randomSounds: 0
     currentIndex: 0
     rndIndex: 0
-    clipsNumber: 0
+    clipsNumber: 5
     clip: {fileID: 0}
     multipleClips: []
     source: {fileID: 0}
@@ -120,20 +120,20 @@ MonoBehaviour:
     mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0
-    followingSounds: 0
+    volume: 1
+    followingSounds: 1
     randomSounds: 0
     currentIndex: 0
     rndIndex: 0
-    clipsNumber: 0
+    clipsNumber: 2
     clip: {fileID: 0}
     multipleClips: []
     source: {fileID: 0}
-  - name: ig music
+  - name: ig music arena
     mixerGroup: {fileID: -4376154885723963321, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0
+    volume: 1
     followingSounds: 0
     randomSounds: 0
     currentIndex: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 3261736241137844026, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0
+    volume: 1
     followingSounds: 0
     randomSounds: 0
     currentIndex: 0

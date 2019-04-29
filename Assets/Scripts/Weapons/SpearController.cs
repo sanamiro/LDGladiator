@@ -10,7 +10,7 @@ public class SpearController : UseableWeaponController
 
     public override void StartUseWeapon(Vector3 pos, Vector3 dir)
     {
-        GameObject newProjectile = Instantiate(projectile, pos, Quaternion.LookRotation(dir));
+        GameObject newProjectile = Instantiate(projectile, pos, Quaternion.LookRotation(new Vector3(0,0,0)));
         newProjectile.GetComponentInChildren<WeaponController>().Owner = Owner;
 
         Rigidbody rb = newProjectile.GetComponent<Rigidbody>();

@@ -176,11 +176,14 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(MusicCrossFade(audioMixer, "AmbianceArenaVolume", "AmbianceShopVolume", crossFadeDuration, "ig crowd ambiance", "ig merchant ambiance"));
         Play("ig merchant say hello");
     }
+    public void QuitShop()
+    {
+        Play("ig merchant say goodbye");
+    }
     public void LoadArenaFromShop()
     {
         StartCoroutine(MusicCrossFade(audioMixer, "MusicShopVolume", "MusicArenaVolume", crossFadeDuration, "ig music merchant", "ig music arena"));
         StartCoroutine(MusicCrossFade(audioMixer, "AmbianceShopVolume", "AmbianceArenaVolume", crossFadeDuration, "ig merchant ambiance", "ig crowd ambiance"));
-        Play("ig merchant say goodbye");
     }
 
 

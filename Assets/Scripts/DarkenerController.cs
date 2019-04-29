@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class DarkenerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
+    
     public Image darkenerImage;
     public bool isGoingDark = false;
     public bool isGoingLight = true;
     public bool isGoingMiddle = false;
     public string currentScene = "";
 
-    void Start()
-    {
-    
-    }
+    public float darkenSpeed = 0.05f;
+    public float lightSpeed = 0.025f;
+
 
     // Update is called once per frame
     void Update()
@@ -42,7 +40,7 @@ public class DarkenerController : MonoBehaviour
         }
         else
         {
-            Color newColor = new Color(0, 0, 0, currentGamma + 0.025f);
+            Color newColor = new Color(0, 0, 0, currentGamma + lightSpeed);
             darkenerImage.color = newColor;
         }
     }
@@ -57,7 +55,7 @@ public class DarkenerController : MonoBehaviour
         }
         else
         {
-            Color newColor = new Color(0, 0, 0, currentGamma - 0.05f);
+            Color newColor = new Color(0, 0, 0, currentGamma - darkenSpeed);
             darkenerImage.color = newColor;
         }
     }
@@ -71,7 +69,7 @@ public class DarkenerController : MonoBehaviour
         }
         else
         {
-            Color newColor = new Color(0, 0, 0, currentGamma + 0.025f);
+            Color newColor = new Color(0, 0, 0, currentGamma + lightSpeed);
             darkenerImage.color = newColor;
         }
     }

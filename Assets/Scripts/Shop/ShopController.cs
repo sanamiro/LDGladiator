@@ -81,6 +81,7 @@ public class ShopController : MonoBehaviour
     {
         Darkener.currentScene = "shop";
         Darkener.isGoingDark = true;
+        AudioManager.instance.QuitShop();
     }
 
     public ShopState State { get => state; }

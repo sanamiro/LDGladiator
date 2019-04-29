@@ -14,7 +14,6 @@ public class ShopItem : MonoBehaviour
 
     private ShopController controller;
     private Button button;
-    private TextMeshProUGUI nameText;
 
     private bool available = true;
     public Transform winScreen;
@@ -38,7 +37,7 @@ public class ShopItem : MonoBehaviour
         Transform nameObj = transform.Find("ItemName");
         if (nameObj != null)
         {
-            nameText = nameObj.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI nameText = nameObj.GetComponent<TextMeshProUGUI>();
             if (nameText != null)
             {
                 nameText.text = ItemName;
@@ -68,10 +67,6 @@ public class ShopItem : MonoBehaviour
                 break;
             case ItemType.Heal:
                 Available = controller.State.IsHealingItemAvailable(Level);
-                if (nameText != null)
-                {
-                    nameText.text = ItemName;
-                }
                 break;
         }
     }

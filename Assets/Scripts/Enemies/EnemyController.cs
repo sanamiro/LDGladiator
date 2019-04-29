@@ -18,6 +18,7 @@ public class EnemyController : CharacterController
     public Transform HeroPos;
     public AnimatorController animController;
     public Animator animator;
+    public bool animatorIsOk = false;
     public UseableWeaponController MeleeWeapon;
     public UseableWeaponController RangedWeapon;
     public EnemyType enemyType = EnemyType.None;
@@ -39,6 +40,78 @@ public class EnemyController : CharacterController
     // Update is called once per frame
     void Update()
     {
+        if(!animatorIsOk)
+        {
+            if (enemyType == EnemyType.Light)
+            {
+                animator = transform.Find("Enemy1").GetComponent<Animator>();
+                animController = transform.Find("Enemy1").GetComponent<AnimatorController>();
+                if (transform.Find("Enemy2"))
+                {
+                    transform.Find("Enemy2").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy3"))
+                {
+                    transform.Find("Enemy3").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy4"))
+                {
+                    transform.Find("Enemy4").gameObject.SetActive(false);
+                }
+            }
+            else if (enemyType == EnemyType.Medium)
+            {
+                animator = transform.Find("Enemy2").GetComponent<Animator>();
+                animController = transform.Find("Enemy2").GetComponent<AnimatorController>();
+                if (transform.Find("Enemy1"))
+                {
+                    transform.Find("Enemy1").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy3"))
+                {
+                    transform.Find("Enemy3").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy4"))
+                {
+                    transform.Find("Enemy4").gameObject.SetActive(false);
+                }
+            }
+            else if (enemyType == EnemyType.Heavy)
+            {
+                animator = transform.Find("Enemy3").GetComponent<Animator>();
+                animController = transform.Find("Enemy3").GetComponent<AnimatorController>();
+                if (transform.Find("Enemy1"))
+                {
+                    transform.Find("Enemy1").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy2"))
+                {
+                    transform.Find("Enemy2").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy4"))
+                {
+                    transform.Find("Enemy4").gameObject.SetActive(false);
+                }
+            }
+            else if (enemyType == EnemyType.Ranged)
+            {
+                animator = transform.Find("Enemy4").GetComponent<Animator>();
+                animController = transform.Find("Enemy4").GetComponent<AnimatorController>();
+                if (transform.Find("Enemy1"))
+                {
+                    transform.Find("Enemy1").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy2"))
+                {
+                    transform.Find("Enemy2").gameObject.SetActive(false);
+                }
+                if (transform.Find("Enemy3"))
+                {
+                    transform.Find("Enemy3").gameObject.SetActive(false);
+                }
+            }
+            animatorIsOk = true;
+        }
         if (enemyType != EnemyType.None && !hasBeenSetUp)
             CustomEnemy(enemyType);
         MoveEnemy();
@@ -139,7 +212,7 @@ public class EnemyController : CharacterController
         isRunning = false;
         navAgent.speed = 0.0f;
         Vector3 dir = (navAgent.destination - transform.position).normalized;
-        animController.attackAnimation();
+        animController.enemyAttackAnimation();
         yield return new WaitForSecondsRealtime(0.25f);
         weaponCollision.StartUseWeapon(transform.position + dir + Vector3.up, dir);
 

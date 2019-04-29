@@ -48,6 +48,10 @@ public class AnimatorController : MonoBehaviour
         else
             animator.SetTrigger("attack_2");
     }
+    public void enemyAttackAnimation()
+    {
+            animator.SetTrigger("attack");
+    }
 
     public void blockAnimation()
     {

@@ -975,6 +975,7 @@ MonoBehaviour:
   ItemName: {fileID: 2114126803}
   ItemInfo: {fileID: 770212177}
   ItemPrice: {fileID: 1773160794}
+  ItemIcon: {fileID: 1724592157}
   BuyButton: {fileID: 1012686552}
   QuitButton: {fileID: 1338620628}
   Darkener: {fileID: 1347738974}
@@ -2774,6 +2775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90d77a5d6817a2458f7b5d914b340fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 973384719}
   Type: 4
   Level: 1
   winScreen: {fileID: 232921394}

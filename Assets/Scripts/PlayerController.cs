@@ -46,13 +46,10 @@ public class PlayerController : CharacterController
     private float attackTimer;
     private int comboState = 0;
 
-    private MouseManager mouseManager;
-
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
-        mouseManager = GetComponent<MouseManager>();
     }
 
     // Start is called before the first frame update
@@ -66,6 +63,7 @@ public class PlayerController : CharacterController
                 Debug.Log("Joystick detected");
                 hasJoystick = true;
                 GetComponent<MouseManager>().hasJoystick = true;
+                GameManager.hasJoystick = true;
             }
         }
 

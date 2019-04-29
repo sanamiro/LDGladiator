@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour
 {
+    public Image image;
+
     public ItemType Type;
     public int Level = 1;
 

@@ -11,6 +11,7 @@ public static class GameManager
 {
     public static readonly float MaxHealth = 100;
 
+    public static bool hasJoystick = false;
     public static GuiController Gui;
     public static List<Stage> stages;
 

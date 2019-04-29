@@ -14,6 +14,7 @@ public class ShopController : MonoBehaviour
     public TextMeshProUGUI ItemName;
     public TextMeshProUGUI ItemInfo;
     public TextMeshProUGUI ItemPrice;
+    public Image ItemIcon;
     public Button BuyButton;
     public Button QuitButton;
     public DarkenerController Darkener;
@@ -47,6 +48,7 @@ public class ShopController : MonoBehaviour
         ItemName.text = item.ItemName;
         ItemInfo.text = item.ItemDesc;
         ItemPrice.text = item.Price.ToString();
+        ItemIcon.sprite = item.image.sprite;
 
         if (selectedItem != null)
         {

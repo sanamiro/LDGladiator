@@ -11,6 +11,10 @@ public class ShopItemButton : MonoBehaviour, ISelectHandler
     public void OnSelect(BaseEventData eventData)
     {
         shopItem.onSelected();
+        if (!GameManager.hasJoystick)
+        {
+            shopItem.OnClicked();
+        }
     }
 
     // Start is called before the first frame update

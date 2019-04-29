@@ -213,12 +213,17 @@ public class EnemyController : CharacterController
         navAgent.speed = 0.0f;
         Vector3 dir = (navAgent.destination - transform.position).normalized;
         animController.enemyAttackAnimation();
-        yield return new WaitForSecondsRealtime(0.25f);
+
+        yield return new WaitForSecondsRealtime(0.4f);
+
         weaponCollision.StartUseWeapon(transform.position + dir + Vector3.up, dir);
+
+        yield return new WaitForSecondsRealtime(0.05f);
+
+        weaponCollision.StopUseWeapon();
 
         yield return new WaitForSeconds(1.5f * AttackCD);
 
-        weaponCollision.StopUseWeapon();
         navAgent.speed = Speed;
         isAttacking = false;
     }

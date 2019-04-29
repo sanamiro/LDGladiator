@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.122200124, g: 0.122575074, b: 0.12116647, a: 1}
+  m_IndirectSpecularColor: {r: 0.12220037, g: 0.12257549, b: 0.12116669, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -834,6 +834,7 @@ MonoBehaviour:
   QuitButton: {fileID: 1338620628}
   Darkener: {fileID: 1347738974}
   selector: {fileID: 323036989}
+  scroller: {fileID: 1176938390}
   items:
   - {fileID: 973384721}
   - {fileID: 8594356838892630453}

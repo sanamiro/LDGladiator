@@ -18,6 +18,7 @@ public class ShopController : MonoBehaviour
     public Button QuitButton;
     public DarkenerController Darkener;
     public SelectOnInput selector;
+    public ScrollRect scroller;
 
     public List<ShopItem> items;
 

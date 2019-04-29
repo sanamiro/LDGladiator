@@ -2509,6 +2509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverView
       objectReference: {fileID: 0}
+    - target: {fileID: 5699829380444007590, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5699829380444007591, guid: 53fe41580c8cd6c45bca2e5c8e704353,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2619,5 +2624,40 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 124446463}
+    - target: {fileID: 5699829380961349130, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_text
+      value: You're dead ! It's freedom, in your way !
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699829380961349130, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699829380961349130, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699829380961349130, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699829380961349130, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699829380961349130, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8493458824446387294, guid: 53fe41580c8cd6c45bca2e5c8e704353,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53fe41580c8cd6c45bca2e5c8e704353, type: 3}

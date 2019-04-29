@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public static class GameManager
 {
@@ -78,6 +79,8 @@ public static class GameManager
         if (currentStage >= stages.Count)
         {
             //TODO Fin ?
+            gameOverView.SetActive(true);
+            gameOverView.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "You defeated all the opponents. So you can rest for a bit before they get Lions to fight against you";
             Debug.Log("No more stages");
         }
         else

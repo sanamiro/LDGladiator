@@ -14,7 +14,7 @@ public class ShopItem : MonoBehaviour
     private Button button;
 
     private bool available = true;
-
+    public Transform winScreen;
     private void Awake()
     {
         button = GetComponentInChildren<Button>();
@@ -91,7 +91,7 @@ public class ShopItem : MonoBehaviour
                 GameManager.PlayerEquipment.capeLevel = Level;
                 break;
             case ItemType.TheWoodenSword:
-                //TODO You Won
+                winScreen.gameObject.SetActive(true);
                 Debug.Log("You Won !");
                 break;
             case ItemType.Heal:

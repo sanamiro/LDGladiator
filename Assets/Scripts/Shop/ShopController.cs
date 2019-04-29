@@ -40,21 +40,26 @@ public class ShopController : MonoBehaviour
         LifeBar.fillAmount = GameManager.PlayerHealth / GameManager.MaxHealth;
     }
 
+    private void UpdateItemData()
+    {
+        ItemName.text = selectedItem.ItemName;
+        ItemInfo.text = selectedItem.ItemDesc;
+        ItemPrice.text = selectedItem.Price.ToString();
+        ItemIcon.sprite = selectedItem.image.sprite;
+    }
+
     public void Select(ShopItem item)
     {
         if (selectedItem != null) selectedItem.Selected = false;
         selectedItem = item;
 
-        ItemName.text = item.ItemName;
-        ItemInfo.text = item.ItemDesc;
-        ItemPrice.text = item.Price.ToString();
-        ItemIcon.sprite = item.image.sprite;
-
         if (selectedItem != null)
         {
+            UpdateItemData();
+
             selectedItem.Selected = true;
-            selector.eventSystem.SetSelectedGameObject(item.Button.gameObject);
             BuyButton.interactable = selectedItem.Price <= GameManager.PlayerMoney;
+            selector.eventSystem.SetSelectedGameObject(item.Button.gameObject);
         }
         else BuyButton.interactable = false;
     }
@@ -68,6 +73,7 @@ public class ShopController : MonoBehaviour
             selectedItem.OnBuy();
             items.ForEach(item => item.UpdateState(this));
             UpdatePlayerData();
+            UpdateItemData();
             if (!selectedItem.Available)
                 Select(items[0]);
             /*selector.enabled = false;

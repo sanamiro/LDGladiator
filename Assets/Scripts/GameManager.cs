@@ -77,21 +77,16 @@ public static class GameManager
     {
         currentStage++;
 
-        if (currentStage >= stages.Count)
+        if (currentStage >= stages.Count) // Not supposed to happen
         {
-            //TODO Fin ?
-            gameOverView.SetActive(true);
-            gameOverView.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "You defeated all the opponents. So you can rest for a bit before they get Lions to fight against you";
-            Debug.Log("No more stages");
+            currentStage = stages.Count - 1;
         }
-        else
-        {
-            //Open Arena Scene
 
-            AudioManager.instance.Stop("menu music");
-            SceneManager.LoadScene("BattleArena");
-            AudioManager.instance.LoadArenaFromShop();
-        }
+        //Open Arena Scene
+
+        AudioManager.instance.Stop("menu music");
+        SceneManager.LoadScene("BattleArena");
+        AudioManager.instance.LoadArenaFromShop();
     }
 
     private static void InitStage()
@@ -161,10 +156,20 @@ public static class GameManager
         playerMoney += bonusMoney;
         playerEquipment = player.Equipment;
 
-
-        //Load Marchant scene
-        SceneManager.LoadScene("Shop");
-        AudioManager.instance.LoadShopFromArena();
+        if (currentStage + 1 >= stages.Count)
+        {
+            // Fin ?
+            gameOverView.SetActive(true);
+            gameOverView.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = "You defeated all the opponents. So you can rest for a bit before they get Lions to fight against you";
+            Debug.Log("No more stages");
+        }
+        else
+        {
+            //Load Marchant scene
+            SceneManager.LoadScene("Shop");
+            AudioManager.instance.LoadShopFromArena();
+        }
+            
     }
 
     public static void UpdatePlayerInfo()

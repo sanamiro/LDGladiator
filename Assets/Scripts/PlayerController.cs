@@ -72,67 +72,34 @@ public class PlayerController : CharacterController
     // Update is called once per frame
     private void Update()
     {
+        targetVelocity.x = -Input.GetAxisRaw("Horizontal");
+        targetVelocity.y = -Input.GetAxisRaw("Vertical");
+        targetVelocity.Normalize();
+        if (Animator != null)
+        {
+            Animator.SetFloat("SpeedX", targetVelocity.x);
+            Animator.SetFloat("SpeedY", targetVelocity.y);
+        }
+
+        if (Input.GetAxisRaw("Horizontal") < 0 && !looksRight && !shieldTriggered)
+        {
+            this.transform.Rotate(new Vector3(0, 1, 0), 180);
+            looksRight = true;
+        }
+        else if (Input.GetAxisRaw("Horizontal") > 0 && looksRight && !shieldTriggered)
+        {
+            this.transform.Rotate(new Vector3(0, 1, 0), 180);
+            looksRight = false;
+        }
+
         if (!hasJoystick)
         {
-            targetVelocity.x = Input.GetAxisRaw("Horizontal");
-            targetVelocity.y = Input.GetAxisRaw("Vertical");
-            targetVelocity.Normalize();
-            if (Animator != null)
-            {
-                Animator.SetFloat("SpeedX", targetVelocity.x);
-                Animator.SetFloat("SpeedY", targetVelocity.y);
-            }
-
             if (Input.GetMouseButtonDown(0)) attackTriggered = true;
             shieldTriggered = Input.GetMouseButton(1);
-
-
-            Debug.Log("oh gad2 " + Input.GetAxisRaw("Horizontal"));
-            if (Input.GetAxisRaw("Horizontal") > 0 && !looksRight && !shieldTriggered)
-            {
-                this.transform.Rotate(new Vector3(0, 1, 0), 180);
-                looksRight = true;
-            }
-            else if (Input.GetAxisRaw("Horizontal") < 0 && looksRight && !shieldTriggered)
-            {
-                this.transform.Rotate(new Vector3(0, 1, 0), 180);
-                looksRight = false;
-            }
-
-            if (targetVelocity.magnitude == 0 && isRunning)
-            {
-                animController.changeRunningAnimation();
-                isRunning = false;
-            }
-            else if (targetVelocity.magnitude != 0 && !isRunning)
-            {
-                animController.changeRunningAnimation();
-                isRunning = true;
-            }
         }
 
         else
         {
-            targetVelocity.x = -Input.GetAxisRaw("Horizontal");
-            targetVelocity.y = -Input.GetAxisRaw("Vertical");
-            targetVelocity.Normalize();
-            if (Animator != null)
-            {
-                Animator.SetFloat("SpeedX", targetVelocity.x);
-                Animator.SetFloat("SpeedY", targetVelocity.y);
-            }
-            
-            if (Input.GetAxisRaw("Horizontal") < 0 && !looksRight && !shieldTriggered)
-            {
-                this.transform.Rotate(new Vector3(0, 1, 0), 180);
-                looksRight = true;
-            }
-            else if (Input.GetAxisRaw("Horizontal") > 0 && looksRight && !shieldTriggered)
-            {
-                this.transform.Rotate(new Vector3(0, 1, 0), 180);
-                looksRight = false;
-            }
-
             if (Input.GetAxis("RT1") >= 0.9f && triggerint == 0)
                 triggerint++;
 
@@ -142,17 +109,17 @@ public class PlayerController : CharacterController
 
             if (Input.GetAxis("RT1") <= 0.1f && triggerint == 2)
                 triggerint = 0;
-            
-            if (targetVelocity.magnitude == 0 && isRunning)
-            {
-                animController.changeRunningAnimation();
-                isRunning = false;
-            }
-            else if (targetVelocity.magnitude != 0 && !isRunning)
-            {
-                animController.changeRunningAnimation();
-                isRunning = true;
-            }
+        }
+
+        if (targetVelocity.magnitude == 0 && isRunning)
+        {
+            animController.changeRunningAnimation();
+            isRunning = false;
+        }
+        else if (targetVelocity.magnitude != 0 && !isRunning)
+        {
+            animController.changeRunningAnimation();
+            isRunning = true;
         }
         Vector3 playerDir = looksRight ? Vector3.right : Vector3.left;
         Debug.DrawRay(transform.position, playerDir * 10, Color.blue, 0.1f);

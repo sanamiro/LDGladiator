@@ -235,27 +235,27 @@ public class EnemyController : CharacterController
         switch (enemyType)
         {
             case EnemyType.Light:
-                DamageValue = 4;
+                DamageValue = 2;
                 MaxHealth = 30;
                 CurrentHealth = MaxHealth;
-                Speed = 3;
-                AttackCD = 1;
+                Speed = 4.5f;
+                AttackCD = 0.5f;
                 break;
 
             case EnemyType.Medium:
                 DamageValue = 5;
                 MaxHealth = 50;
                 CurrentHealth = MaxHealth;
-                Speed = 2;
-                AttackCD = 2;
+                Speed = 2.2f;
+                AttackCD = 1;
                 break;
 
             case EnemyType.Heavy:
-                DamageValue = 16;
+                DamageValue = 14;
                 MaxHealth = 100;
                 CurrentHealth = MaxHealth;
-                Speed = 1;
-                AttackCD = 4;
+                Speed = 0.5f;
+                AttackCD = 1;
                 break;
 
             case EnemyType.Ranged:
@@ -263,7 +263,7 @@ public class EnemyController : CharacterController
                 MaxHealth = 30;
                 CurrentHealth = MaxHealth;
                 Speed = 2;
-                AttackCD = 2;
+                AttackCD = 1;
                 navAgent.stoppingDistance = 8;
                 weaponCollision = RangedWeapon;
                 break;

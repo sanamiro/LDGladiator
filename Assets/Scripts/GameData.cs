@@ -22,4 +22,10 @@ public class GameData : MonoBehaviour
         GameManager.RestartGame();
     }
 
+    public void ExitGame()
+    {
+        Debug.Log("Exit Application");
+        Application.Quit();
+    }
+
 }

@@ -208,9 +208,9 @@ public static class HealingItemStats
     {
         switch (level)
         {
-            case 1: return "(" + availableCount + ")" + " Apple";
-            case 2: return "(" + availableCount + ")" + " Chicken";
-            case 3: return "(" + availableCount + ")" + " Potion ";
+            case 1: return + availableCount + " x " + "Apple";
+            case 2: return  + availableCount + " x " + "Chicken";
+            case 3: return  + availableCount + " x " + "Potion ";
 
             default: return "";
         }
@@ -220,7 +220,7 @@ public static class HealingItemStats
     {
         switch (level)
         {
-            case 1: return " * A apple a day keeps the lion away.";
+            case 1: return "A apple a day keeps the lion away.";
             case 2: return "Not that much proteins but really tasty.";
             case 3: return "Weird to see that in a realistic world. Who said ludonarative dissonance ? Anyway it's red liquid make you feel like a new born.";
 

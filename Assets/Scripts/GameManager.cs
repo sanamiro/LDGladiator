@@ -44,6 +44,9 @@ public static class GameManager
     {
         currentStage = -1;
         SceneManager.LoadScene("BattleArena");
+        AudioManager.instance.Play("ig music arena");
+        AudioManager.instance.Play("ig crowd ambiance");
+        AudioManager.instance.Stop("menu music");
     }
 
     public static void InitGame()
@@ -78,7 +81,10 @@ public static class GameManager
         else
         {
             //Open Arena Scene
+
+            AudioManager.instance.Stop("menu music");
             SceneManager.LoadScene("BattleArena");
+            AudioManager.instance.LoadArenaFromShop();
         }
     }
 
@@ -152,6 +158,7 @@ public static class GameManager
 
         //Load Marchant scene
         SceneManager.LoadScene("Shop");
+        AudioManager.instance.LoadShopFromArena();
     }
 
     public static void OnPlayerDie()

@@ -51,6 +51,461 @@ MonoBehaviour:
   fadeDuration: 0
   crossFadeDuration: 0
   sounds:
+  - name: ig crowd ambiance
+    mixerGroup: {fileID: 8357102355924305214, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig crowd corridor ambiance
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig crowd door music
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig door open
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 1 attack
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 5
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 1 die
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 4
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 1 fall
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 1 footstep
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 8
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 1 get hit
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 2 attack
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 4
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 2 die
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 2 fall
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 2 footstep
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 6
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 2 get hit
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 2 kill
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 3 attack
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 3 die
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 3 fall
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 3 footstep
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 4
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 3 get hit
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 4
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 4 attack
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 6
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 4 die
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 2
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 4 fall
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 4 footstep
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 4
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 4 get hit
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 4
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig ennemy 4 kill
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: 'ig merchant ambiance '
+    mixerGroup: {fileID: -8905995940114703631, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig merchant buy freedom
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig merchant buy item
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 2
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig merchant not enought currency
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig merchant say goodbye
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 3
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig merchant say hello
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 2
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig music arena
+    mixerGroup: {fileID: -4376154885723963321, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig music merchant
+    mixerGroup: {fileID: 2580263119137854347, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
+  - name: ig music open the door
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
+      type: 2}
+    loop: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 0
+    currentIndex: 0
+    rndIndex: 0
+    clipsNumber: 0
+    clip: {fileID: 0}
+    multipleClips: []
+    source: {fileID: 0}
   - name: ig player attack
     mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
@@ -81,7 +536,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0.82
+    volume: 1
     followingSounds: 0
     randomSounds: 1
     currentIndex: 0
@@ -95,8 +550,8 @@ MonoBehaviour:
       type: 2}
     loop: 0
     volume: 1
-    followingSounds: 1
-    randomSounds: 0
+    followingSounds: 0
+    randomSounds: 1
     currentIndex: 0
     rndIndex: 0
     clipsNumber: 4
@@ -107,9 +562,9 @@ MonoBehaviour:
     mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
-    volume: 0
-    followingSounds: 1
-    randomSounds: 0
+    volume: 1
+    followingSounds: 0
+    randomSounds: 1
     currentIndex: 0
     rndIndex: 0
     clipsNumber: 5
@@ -121,16 +576,16 @@ MonoBehaviour:
       type: 2}
     loop: 0
     volume: 1
-    followingSounds: 1
-    randomSounds: 0
+    followingSounds: 0
+    randomSounds: 1
     currentIndex: 0
     rndIndex: 0
     clipsNumber: 2
     clip: {fileID: 0}
     multipleClips: []
     source: {fileID: 0}
-  - name: ig music arena
-    mixerGroup: {fileID: -4376154885723963321, guid: 9a8d781aa4720a2409676ae5531c5149,
+  - name: menu music
+    mixerGroup: {fileID: 7082461660080667319, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
     volume: 1
@@ -142,35 +597,11 @@ MonoBehaviour:
     clip: {fileID: 0}
     multipleClips: []
     source: {fileID: 0}
-  - name: ig music open the door
-    mixerGroup: {fileID: 3261736241137844026, guid: 9a8d781aa4720a2409676ae5531c5149,
+  - name: menu button
+    mixerGroup: {fileID: 4157342504066466004, guid: 9a8d781aa4720a2409676ae5531c5149,
       type: 2}
     loop: 0
     volume: 1
-    followingSounds: 0
-    randomSounds: 0
-    currentIndex: 0
-    rndIndex: 0
-    clipsNumber: 0
-    clip: {fileID: 0}
-    multipleClips: []
-    source: {fileID: 0}
-  - name: 
-    mixerGroup: {fileID: 0}
-    loop: 0
-    volume: 0
-    followingSounds: 0
-    randomSounds: 0
-    currentIndex: 0
-    rndIndex: 0
-    clipsNumber: 0
-    clip: {fileID: 0}
-    multipleClips: []
-    source: {fileID: 0}
-  - name: 
-    mixerGroup: {fileID: 0}
-    loop: 0
-    volume: 0
     followingSounds: 0
     randomSounds: 0
     currentIndex: 0

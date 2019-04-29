@@ -166,46 +166,25 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void LoadLevelFromMainMenuCrossFade()
+    public void LoadArenaFromMenu()
     {
-        StartCoroutine(MusicCrossFade(audioMixer, "menuMusicVolume", "igMusicVolume", crossFadeDuration, "menu music", "ig music"));
+        StartCoroutine(MusicCrossFade(audioMixer, "MusicMenuVolume", "MusicArenaVolume", crossFadeDuration, "menu music", "ig music arena"));
+    }
+    public void LoadShopFromArena()
+    {
+        StartCoroutine(MusicCrossFade(audioMixer, "MusicArenaVolume", "MusicShopVolume", crossFadeDuration, "ig music arena", "ig music merchant"));
+        StartCoroutine(MusicCrossFade(audioMixer, "AmbianceArenaVolume", "AmbianceShopVolume", crossFadeDuration, "ig crowd ambiance", "ig merchant ambiance"));
+        print("fade shop to arena");
+    }
+    public void LoadArenaFromShop()
+    {
+        StartCoroutine(MusicCrossFade(audioMixer, "MusicShopVolume", "MusicArenaVolume", crossFadeDuration, "ig music merchant", "ig music arena"));
+        StartCoroutine(MusicCrossFade(audioMixer, "AmbianceShopVolume", "AmbianceArenaVolume", crossFadeDuration, "ig merchant ambiance", "ig crowd ambiance"));
+        print("fade arena to shop");
     }
 
 
-    public void ExitToMainMenuCrossFade()
-    {
-        StartCoroutine(MusicCrossFade(audioMixer, "igMusicVolume", "menuMusicVolume", crossFadeDuration, "ig music", "menu music"));
-    }
 
-    public void PauseMenuMusicCutoff()
-    {
-        StartCoroutine(MusicCutoffCoroutine(playCutoffFreq, pauseCutoffFreq, playVolume, pauseVolume, fadeDuration));
-    }
-
-
-    public void ResumeMusicCutoff()
-    {
-        StartCoroutine(MusicCutoffCoroutine(pauseCutoffFreq, playCutoffFreq, pauseVolume, playVolume, fadeDuration));
-    }
-
-
-    IEnumerator MusicCutoffCoroutine(float startMusicCutoff, float endMusicCutoff, float startMusicVolume, float endMusicVolume, float fadeDuration)
-    {
-        float currentTime = 0f;
-        float normalizedValue;
-
-        while (currentTime <= fadeDuration)
-        {
-            currentTime += Time.unscaledDeltaTime;
-            normalizedValue = currentTime / fadeDuration;
-            audioMixer.SetFloat("igMusicCutoff", Mathf.Lerp(startMusicCutoff, endMusicCutoff, normalizedValue));
-            audioMixer.SetFloat("igMusicVolume", Mathf.Lerp(startMusicVolume, endMusicVolume, normalizedValue));
-            yield return null;
-        }
-        audioMixer.SetFloat("igMusicCutoff", endMusicCutoff);
-        audioMixer.SetFloat("igMusicVolume", endMusicVolume);
-        yield return null;
-    }
 
     public IEnumerator MusicCrossFade(AudioMixer audioMixer, string fadeOutParamName, string fadeInParamName, float crossFadeDuration, string fadedOutMusicName, string fadeInMusicName)
     {

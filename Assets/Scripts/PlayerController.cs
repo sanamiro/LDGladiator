@@ -48,14 +48,6 @@ public class PlayerController : CharacterController
 
     private MouseManager mouseManager;
 
-    [Space]
-    [Header("Sons")]
-    public AudioClip[] sonAttack = new AudioClip[5];
-    public AudioClip[] sonGetHit = new AudioClip[4];
-    public AudioClip[] sonFootStep = new AudioClip[4];
-    public AudioClip[] sonShieldGetHit = new AudioClip[5];
-    public AudioClip[] sonShieldUp = new AudioClip[2];
-    public AudioClip sonDeath;
 
     private void Awake()
     {
@@ -182,6 +174,7 @@ public class PlayerController : CharacterController
                 {
                     state = ActionState.Parry;
                     animController.blockAnimation();
+                    AudioManager.instance.Play("ig player shield up");
                 }
                 else if (attackTimer <= 0 && attackTriggered)
                 {
@@ -193,7 +186,7 @@ public class PlayerController : CharacterController
                     attackTimer = AttackCooldown;
                     WeaponCollision.StartUseWeapon(WeaponCollision.transform.position, Vector3.zero);
                     animController.attackAnimation();
-                    launchRandomSound("ig player attack");
+                    AudioManager.instance.Play("ig player attack");
                 }
                 break;
             case ActionState.Attack:
@@ -248,13 +241,16 @@ public class PlayerController : CharacterController
             float angleFromShield = Vector2.Angle(new Vector2(attackerDir.x, attackerDir.z), mouseManager.MouseDir);
 
             Debug.DrawRay(transform.position, attackerDir * 10, Color.red, 1);
-            
+
             if (angleFromShield < shieldSize / 2) //Hit the shield
+            {
+                AudioManager.instance.Play("ig player shield get hit");
                 return;
+            }
         }
         if (base.Health > 0)
         {
-            launchRandomSound("ig player get hit");
+            AudioManager.instance.Play("ig player get hit");
         }
         base.OnDamaged(weapon);
     }
@@ -268,11 +264,6 @@ public class PlayerController : CharacterController
     private void Move(Vector2 targetSpeed)
     {
         rigidBody.velocity = new Vector3(targetSpeed.x, 0, targetSpeed.y);
-    }
-
-    private void launchRandomSound(string nomDuSon)
-    {
-        AudioManager.instance.Play(nomDuSon);
     }
 
     #region GETTER/SETTER

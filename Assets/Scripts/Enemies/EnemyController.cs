@@ -25,6 +25,7 @@ public class EnemyController : CharacterController
     [Header("Enemy Values")]
     public float MaxHealth;
     public float CurrentHealth;
+    public float previousHealth;
     public float DamageValue;
     public float Speed;
     public float AttackCD;
@@ -52,6 +53,26 @@ public class EnemyController : CharacterController
             this.transform.Rotate(new Vector3(0, 1, 0), 180);
             looksRight = false;
         }
+        if(previousHealth != CurrentHealth) // check if health lost to launch sound
+        {
+            if (enemyType == EnemyType.Light)
+            {
+                AudioManager.instance.Play("ig ennemy 1 get hit");
+            }
+            else if (enemyType == EnemyType.Medium)
+            {
+                AudioManager.instance.Play("ig ennemy 2 get hit");
+            }
+            else if (enemyType == EnemyType.Heavy)
+            {
+                AudioManager.instance.Play("ig ennemy 3 get hit");
+            }
+            else if (enemyType == EnemyType.Ranged)
+            {
+                AudioManager.instance.Play("ig ennemy 4 get hit");
+            }
+        }
+        previousHealth = CurrentHealth;
     }
 
     private void MoveEnemy()
@@ -66,6 +87,22 @@ public class EnemyController : CharacterController
         if (!navAgent.pathPending && navAgent.remainingDistance <= navAgent.stoppingDistance /*(navAgent.destination - transform.position).magnitude <= 2.0f*/ && !isAttacking)
         {
             StartCoroutine(AttackPlayer());
+            if(enemyType == EnemyType.Light)
+            {
+                AudioManager.instance.Play("ig ennemy 1 attack");
+            }
+            else if (enemyType == EnemyType.Medium)
+            {
+                AudioManager.instance.Play("ig ennemy 2 attack");
+            }
+            else if (enemyType == EnemyType.Heavy)
+            {
+                AudioManager.instance.Play("ig ennemy 3 attack");
+            }
+            else if (enemyType == EnemyType.Ranged)
+            {
+                AudioManager.instance.Play("ig ennemy 4 attack");
+            }
         }
     }
 
@@ -73,6 +110,26 @@ public class EnemyController : CharacterController
     {
         this.gameObject.SetActive(false);
         GameManager.OnEnemyKilled();
+        if (enemyType == EnemyType.Light)
+        {
+            AudioManager.instance.Play("ig ennemy 1 fall");
+            AudioManager.instance.Play("ig ennemy 1 die");
+        }
+        else if (enemyType == EnemyType.Medium)
+        {
+            AudioManager.instance.Play("ig ennemy 2 fall");
+            AudioManager.instance.Play("ig ennemy 2 die");
+        }
+        else if (enemyType == EnemyType.Heavy)
+        {
+            AudioManager.instance.Play("ig ennemy 3 fall");
+            AudioManager.instance.Play("ig ennemy 3 die");
+        }
+        else if (enemyType == EnemyType.Ranged)
+        {
+            AudioManager.instance.Play("ig ennemy 4 fall");
+            AudioManager.instance.Play("ig ennemy 4 die");
+        }
     }
 
     private IEnumerator AttackPlayer()
@@ -99,35 +156,35 @@ public class EnemyController : CharacterController
         switch (enemyType)
         {
             case EnemyType.Light:
-                DamageValue = 1;
-                MaxHealth = 100;
+                DamageValue = 4;
+                MaxHealth = 30;
                 CurrentHealth = MaxHealth;
-                Speed = 1;
+                Speed = 3;
                 AttackCD = 1;
                 break;
 
             case EnemyType.Medium:
-                DamageValue = 1;
-                MaxHealth = 100;
+                DamageValue = 5;
+                MaxHealth = 50;
                 CurrentHealth = MaxHealth;
-                Speed = 1;
-                AttackCD = 1;
+                Speed = 2;
+                AttackCD = 2;
                 break;
 
             case EnemyType.Heavy:
-                DamageValue = 1;
+                DamageValue = 16;
                 MaxHealth = 100;
                 CurrentHealth = MaxHealth;
                 Speed = 1;
-                AttackCD = 1;
+                AttackCD = 4;
                 break;
 
             case EnemyType.Ranged:
                 DamageValue = 1;
-                MaxHealth = 100;
+                MaxHealth = 30;
                 CurrentHealth = MaxHealth;
-                Speed = 1;
-                AttackCD = 1;
+                Speed = 2;
+                AttackCD = 2;
                 navAgent.stoppingDistance = 8;
                 weaponCollision = RangedWeapon;
                 break;

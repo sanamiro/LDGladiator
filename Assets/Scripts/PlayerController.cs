@@ -258,6 +258,16 @@ public class PlayerController : CharacterController
 
     public override void OnDeath()
     {
+
+        int randomCall = Random.Range(1, 2);
+        if (randomCall == 1)
+        {
+            AudioManager.instance.Play("ig ennemy 2 kill");
+        }
+        else
+        {
+            AudioManager.instance.Play("ig ennemy 4 kill");
+        }
         AudioManager.instance.Play("ig player die");
         GameManager.OnPlayerDie();
     }

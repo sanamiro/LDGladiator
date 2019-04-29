@@ -139,8 +139,9 @@ public class EnemyController : CharacterController
         isRunning = false;
         navAgent.speed = 0.0f;
         Vector3 dir = (navAgent.destination - transform.position).normalized;
-        weaponCollision.StartUseWeapon(transform.position + dir + Vector3.up, dir);
         animController.attackAnimation();
+        yield return new WaitForSecondsRealtime(0.25f);
+        weaponCollision.StartUseWeapon(transform.position + dir + Vector3.up, dir);
 
         yield return new WaitForSeconds(1.5f * AttackCD);
 

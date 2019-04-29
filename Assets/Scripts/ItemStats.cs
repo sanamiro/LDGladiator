@@ -18,10 +18,10 @@ public static class EquipmentStats
     {
         switch (sword)
         {
-            case 0: return 1;
-            case 1: return 2;
-            case 2: return 3;
-            case 3: return 4;
+            case 0: return 1;// epee de base équipé sur le joueur
+            case 1: return 2;//1ere epee du shop - degats
+            case 2: return 4;//2eme epee du shop - degats
+            case 3: return 4; // pas de 3eme epee
             case 4: return 5;
 
             default: return 0;
@@ -32,9 +32,9 @@ public static class EquipmentStats
     {
         switch (sword)
         {
-            case 1: return 10;
-            case 2: return 20;
-            case 3: return 30;
+            case 1: return 50;//1ere epee du shop - prix
+            case 2: return 200;//2eme epee du shop - prix
+            case 3: return 30;// pas de 3eme epee
             case 4: return 40;
 
             default: return 0;
@@ -46,10 +46,10 @@ public static class EquipmentStats
     {
         switch (armor)
         {
-            case 0: return 1.0f;
-            case 1: return 1.25f;
-            case 2: return 1.5f;
-            case 3: return 1.75f;
+            case 0: return 1.0f;// armure de base équipé sur le joueur
+            case 1: return 1.5f;//1ere armure du shop - armor
+            case 2: return 2.0f;//2eme armure du shop - armor
+            case 3: return 1.75f;// pas de 3eme 
             case 4: return 2.0f;  // Damage divisé par 2
 
             default: return 0;
@@ -60,9 +60,9 @@ public static class EquipmentStats
     {
         switch (armor)
         {
-            case 1: return 10;
-            case 2: return 20;
-            case 3: return 30;
+            case 1: return 50;//1ere armure du shop - prix
+            case 2: return 200;//2eme armure du shop - prix
+            case 3: return 30;// pas de 3eme 
             case 4: return 40;
 
             default: return 0;
@@ -74,8 +74,8 @@ public static class EquipmentStats
     {
         switch (sandal)
         {
-            case 1: return 0.25f; // +25% de speed
-            case 2: return 0.5f;
+            case 1: return 0.25f; // +25% de speed //1ere sandale du shop - vitesse
+            case 2: return 0.5f;// +50% de speed //2ere sandale du shop - vitesse
 
             default: return 0;
         }
@@ -85,8 +85,8 @@ public static class EquipmentStats
     {
         switch (sandal)
         {
-            case 1: return 10;
-            case 2: return 30;
+            case 1: return 50;//1ere sandale du shop -prix
+            case 2: return 200; //2ere sandale du shop -prix
 
             default: return 0;
         }
@@ -115,7 +115,7 @@ public static class EquipmentStats
         }
     }
 
-    public static int WoodenSwordPrice = 100;
+    public static int WoodenSwordPrice = 1000;
     public static string WoodenSwordName = "The Ultimate Wooden Sword";
     public static string WoodenSwordDesc = "The Ultimate Wooden Sword";
 
@@ -171,9 +171,9 @@ public static class HealingItemStats
         switch (level)
         {
             case 1: return 10;
-            case 2: return 10;
-            case 3: return 20;
-            case 4: return 30;
+            case 2: return 30;
+            case 3: return 50;
+            case 4: return 70;
 
             default: return 0;
         }
@@ -184,8 +184,8 @@ public static class HealingItemStats
         switch (level)
         {
             case 1: return 6;
-            case 2: return 6;
-            case 3: return 11;
+            case 2: return 15;
+            case 3: return 30;
             case 4: return 15;
 
             default: return 0;
@@ -196,8 +196,8 @@ public static class HealingItemStats
     {
         switch (level)
         {
-            case 1: return 3;
-            case 2: return 3;
+            case 1: return 7;
+            case 2: return 4;
             case 3: return 2;
             case 4: return 2;
 

@@ -134,7 +134,7 @@ public class ShopItem : MonoBehaviour
                 case ItemType.Sandal: return EquipmentStats.GetSandalName(Level);
                 case ItemType.Cape: return EquipmentStats.GetCapeName(Level);
                 case ItemType.TheWoodenSword: return EquipmentStats.WoodenSwordName;
-                case ItemType.Heal: return HealingItemStats.GetName(Level);
+                case ItemType.Heal: return HealingItemStats.GetName(Level, controller.State.GetHealingItemCount(Level));
 
                 default: return "";
             }
@@ -152,7 +152,7 @@ public class ShopItem : MonoBehaviour
                 case ItemType.Sandal: return EquipmentStats.GetSandalDesc(Level);
                 case ItemType.Cape: return EquipmentStats.GetCapeDesc(Level);
                 case ItemType.TheWoodenSword: return EquipmentStats.WoodenSwordDesc;
-                case ItemType.Heal: return HealingItemStats.GetDesc(Level, controller.State.GetHealingItemCount(Level));
+                case ItemType.Heal: return HealingItemStats.GetDesc(Level/*, controller.State.GetHealingItemCount(Level)*/);
 
                 default: return "";
             }

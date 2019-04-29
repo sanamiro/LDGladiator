@@ -236,7 +236,7 @@ public class EnemyController : CharacterController
         {
             case EnemyType.Light:
                 DamageValue = 2;
-                MaxHealth = 30;
+                MaxHealth = 10;
                 CurrentHealth = MaxHealth;
                 Speed = 4.5f;
                 AttackCD = 0.5f;
@@ -244,7 +244,7 @@ public class EnemyController : CharacterController
 
             case EnemyType.Medium:
                 DamageValue = 5;
-                MaxHealth = 50;
+                MaxHealth = 15;
                 CurrentHealth = MaxHealth;
                 Speed = 2.2f;
                 AttackCD = 1;
@@ -252,7 +252,7 @@ public class EnemyController : CharacterController
 
             case EnemyType.Heavy:
                 DamageValue = 14;
-                MaxHealth = 100;
+                MaxHealth = 25;
                 CurrentHealth = MaxHealth;
                 Speed = 0.5f;
                 AttackCD = 1;
@@ -260,7 +260,7 @@ public class EnemyController : CharacterController
 
             case EnemyType.Ranged:
                 DamageValue = 1;
-                MaxHealth = 30;
+                MaxHealth = 12;
                 CurrentHealth = MaxHealth;
                 Speed = 2;
                 AttackCD = 1;

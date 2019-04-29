@@ -16,3 +16,5 @@ MonoBehaviour:
   - Enemies:
     - EnemyType: 1
       Count: 1
+    - EnemyType: 0
+      Count: 1

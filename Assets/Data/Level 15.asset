@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f66d4950fd37840a841fe30f94102e, type: 3}
-  m_Name: Level 12
+  m_Name: Level 15
   m_EditorClassIdentifier: 
   Waves:
   - Enemies:
     - EnemyType: 0
-      Count: 4
-    - EnemyType: 2
       Count: 3
+    - EnemyType: 2
+      Count: 4
+    - EnemyType: 3
+      Count: 3
+    - EnemyType: 1
+      Count: 1

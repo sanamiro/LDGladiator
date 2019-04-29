@@ -15,6 +15,6 @@ MonoBehaviour:
   Waves:
   - Enemies:
     - EnemyType: 0
-      Count: 2
+      Count: 3
     - EnemyType: 1
       Count: 2

@@ -19,8 +19,8 @@ public static class EquipmentStats
         switch (sword)
         {
             case 0: return 1;// epee de base équipé sur le joueur
-            case 1: return 2;//1ere epee du shop - degats
-            case 2: return 4;//2eme epee du shop - degats
+            case 1: return 1.5f;//1ere epee du shop - degats
+            case 2: return 2.8f;//2eme epee du shop - degats
             case 3: return 4; // pas de 3eme epee
             case 4: return 5;
 
@@ -32,8 +32,8 @@ public static class EquipmentStats
     {
         switch (sword)
         {
-            case 1: return 50;//1ere epee du shop - prix
-            case 2: return 200;//2eme epee du shop - prix
+            case 1: return 60;//1ere epee du shop - prix
+            case 2: return 300;//2eme epee du shop - prix
             case 3: return 30;// pas de 3eme epee
             case 4: return 40;
 
@@ -60,8 +60,8 @@ public static class EquipmentStats
     {
         switch (armor)
         {
-            case 1: return 50;//1ere armure du shop - prix
-            case 2: return 200;//2eme armure du shop - prix
+            case 1: return 70;//1ere armure du shop - prix
+            case 2: return 240;//2eme armure du shop - prix
             case 3: return 30;// pas de 3eme 
             case 4: return 40;
 
@@ -74,8 +74,8 @@ public static class EquipmentStats
     {
         switch (sandal)
         {
-            case 1: return 0.25f; // +25% de speed //1ere sandale du shop - vitesse
-            case 2: return 0.5f;// +50% de speed //2ere sandale du shop - vitesse
+            case 1: return 0.10f; // +25% de speed //1ere sandale du shop - vitesse
+            case 2: return 0.25f;// +50% de speed //2ere sandale du shop - vitesse
 
             default: return 0;
         }
@@ -85,8 +85,8 @@ public static class EquipmentStats
     {
         switch (sandal)
         {
-            case 1: return 50;//1ere sandale du shop -prix
-            case 2: return 200; //2ere sandale du shop -prix
+            case 1: return 30;//1ere sandale du shop -prix
+            case 2: return 110; //2ere sandale du shop -prix
 
             default: return 0;
         }
@@ -140,25 +140,24 @@ public static class EquipmentStats
     }
 
 
-
     public static string GetSwordDesc(int level)
     {
-        return "Sword " + level;
+        return "Sharp as a paper sheet, whit it you will kill faster. Even vegans like swords like that.";
     }
 
     public static string GetArmorDesc(int level)
     {
-        return "Armor " + level;
+        return "It will protect you from enemy's attack. At least a bit more than if you fight completely nude.";
     }
 
     public static string GetSandalDesc(int level)
     {
-        return "Sandal " + level;
+        return "A pair of sandal. You should buy it if you consider doing a marathon.";
     }
 
     public static string GetCapeDesc(int level)
     {
-        return "Cape " + level;
+        return "Supergladiator used to wear this cape, but nobody was really sure since he was to fast.";
     }
 }
 
@@ -205,13 +204,27 @@ public static class HealingItemStats
         }
     }
 
-    public static string GetName(int level)
+    public static string GetName(int level, int availableCount)
     {
-        return "Potion " + level;
+        switch (level)
+        {
+            case 1: return "(" + availableCount + ")" + " Apple";
+            case 2: return "(" + availableCount + ")" + " Chicken";
+            case 3: return "(" + availableCount + ")" + " Potion ";
+
+            default: return "";
+        }
     }
 
-    public static string GetDesc(int level, int availableCount)
+    public static string GetDesc(int level/*, int availableCount*/)
     {
-        return availableCount + " * Potion " + level;
+        switch (level)
+        {
+            case 1: return " * A apple a day keeps the lion away.";
+            case 2: return "Not that much proteins but really tasty.";
+            case 3: return "Weird to see that in a realistic world. Who said ludonarative dissonance ? Anyway it's red liquid make you feel like a new born.";
+
+            default: return "";
+        }
     }
 }

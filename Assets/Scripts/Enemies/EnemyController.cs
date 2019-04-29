@@ -160,6 +160,22 @@ public class EnemyController : CharacterController
         if (!navAgent.pathPending && navAgent.remainingDistance <= navAgent.stoppingDistance /*(navAgent.destination - transform.position).magnitude <= 2.0f*/ && !isAttacking)
         {
             StartCoroutine(AttackPlayer());
+            if(enemyType == EnemyType.Light)
+            {
+                AudioManager.instance.Play("ig ennemy 1 attack");
+            }
+            else if (enemyType == EnemyType.Medium)
+            {
+                AudioManager.instance.Play("ig ennemy 2 attack");
+            }
+            else if (enemyType == EnemyType.Heavy)
+            {
+                AudioManager.instance.Play("ig ennemy 3 attack");
+            }
+            else if (enemyType == EnemyType.Ranged)
+            {
+                AudioManager.instance.Play("ig ennemy 4 attack");
+            }
         }
     }
 
@@ -201,23 +217,6 @@ public class EnemyController : CharacterController
         yield return new WaitForSecondsRealtime(0.4f);
 
         weaponCollision.StartUseWeapon(transform.position + dir + Vector3.up, dir);
-
-        if (enemyType == EnemyType.Light)
-        {
-            AudioManager.instance.Play("ig ennemy 1 attack");
-        }
-        else if (enemyType == EnemyType.Medium)
-        {
-            AudioManager.instance.Play("ig ennemy 2 attack");
-        }
-        else if (enemyType == EnemyType.Heavy)
-        {
-            AudioManager.instance.Play("ig ennemy 3 attack");
-        }
-        else if (enemyType == EnemyType.Ranged)
-        {
-            AudioManager.instance.Play("ig ennemy 4 attack");
-        }
 
         yield return new WaitForSecondsRealtime(0.05f);
 
@@ -272,6 +271,7 @@ public class EnemyController : CharacterController
             default:
                 break;
         }
+        navAgent.speed = Speed;
     }
 
     #region GETTER/SETTER

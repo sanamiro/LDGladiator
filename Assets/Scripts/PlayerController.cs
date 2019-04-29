@@ -253,6 +253,7 @@ public class PlayerController : CharacterController
             AudioManager.instance.Play("ig player get hit");
         }
         base.OnDamaged(weapon);
+        GameManager.UpdatePlayerInfo();
     }
 
     public override void OnDeath()

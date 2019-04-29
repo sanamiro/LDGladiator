@@ -10,6 +10,7 @@ public static class GameManager
 {
     public static readonly float MaxHealth = 100;
 
+    public static GuiController Gui;
     public static List<Stage> stages;
 
     private static PlayerController player;
@@ -58,6 +59,7 @@ public static class GameManager
             playerEquipment = new EquipmentInfo();
             currentStage = 0;
             InitStage();
+            player.Health = MaxHealth;
         }
         else
         {
@@ -159,6 +161,15 @@ public static class GameManager
         //Load Marchant scene
         SceneManager.LoadScene("Shop");
         AudioManager.instance.LoadShopFromArena();
+    }
+
+    public static void UpdatePlayerInfo()
+    {
+        playerHealth = player.Health;
+        if (Gui != null)
+        {
+            Gui.UpdatePlayerInfo();
+        }
     }
 
     public static void OnPlayerDie()

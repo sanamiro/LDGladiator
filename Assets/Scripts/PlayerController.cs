@@ -59,11 +59,14 @@ public class PlayerController : CharacterController
     private void Start()
     {
         planeXZ = new Plane(Vector3.up, transform.position);
-        if (Input.GetJoystickNames().Length != 0 || Input.GetJoystickNames().GetValue(0).ToString() != "")
+        if (Input.GetJoystickNames().Length != 0)
         {
-            Debug.Log("Joystick detected");
-            hasJoystick = true;
-            GetComponent<MouseManager>().hasJoystick = true;
+            if (Input.GetJoystickNames().GetValue(0).ToString() != "")
+            {
+                Debug.Log("Joystick detected");
+                hasJoystick = true;
+                GetComponent<MouseManager>().hasJoystick = true;
+            }
         }
 
     }
@@ -85,12 +88,14 @@ public class PlayerController : CharacterController
             if (Input.GetMouseButtonDown(0)) attackTriggered = true;
             shieldTriggered = Input.GetMouseButton(1);
 
-            if (Input.GetAxisRaw("Horizontal") < 0 && !looksRight && !!shieldTriggered)
+
+            Debug.Log("oh gad2 " + Input.GetAxisRaw("Horizontal"));
+            if (Input.GetAxisRaw("Horizontal") > 0 && !looksRight && !shieldTriggered)
             {
                 this.transform.Rotate(new Vector3(0, 1, 0), 180);
                 looksRight = true;
             }
-            else if (Input.GetAxisRaw("Horizontal") > 0 && looksRight && !shieldTriggered)
+            else if (Input.GetAxisRaw("Horizontal") < 0 && looksRight && !shieldTriggered)
             {
                 this.transform.Rotate(new Vector3(0, 1, 0), 180);
                 looksRight = false;
@@ -118,7 +123,7 @@ public class PlayerController : CharacterController
                 Animator.SetFloat("SpeedX", targetVelocity.x);
                 Animator.SetFloat("SpeedY", targetVelocity.y);
             }
-
+            
             if (Input.GetAxisRaw("Horizontal") < 0 && !looksRight && !shieldTriggered)
             {
                 this.transform.Rotate(new Vector3(0, 1, 0), 180);

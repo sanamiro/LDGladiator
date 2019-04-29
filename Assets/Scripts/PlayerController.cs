@@ -156,6 +156,8 @@ public class PlayerController : CharacterController
                 isRunning = true;
             }
         }
+        Vector3 playerDir = looksRight ? Vector3.right : Vector3.left;
+        Debug.DrawRay(transform.position, playerDir * 10, Color.blue, 0.1f);
     }
 
     private void FixedUpdate()
@@ -242,8 +244,9 @@ public class PlayerController : CharacterController
     {
         if (state == ActionState.Parry)
         {
+            Vector3 playerDir = looksRight ? Vector3.right : Vector3.left;
             Vector3 attackerDir = weapon.Owner.transform.position - transform.position;
-            float angleFromShield = Vector2.Angle(new Vector2(attackerDir.x, attackerDir.z), mouseManager.MouseDir);
+            float angleFromShield = Vector2.Angle(new Vector2(attackerDir.x, attackerDir.z), playerDir);
 
             Debug.DrawRay(transform.position, attackerDir * 10, Color.red, 1);
 

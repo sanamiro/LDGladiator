@@ -210,8 +210,8 @@ public static class HealingItemStats
         return "Potion " + level;
     }
 
-    public static string GetDesc(int level)
+    public static string GetDesc(int level, int availableCount)
     {
-        return "Potion " + level;
+        return availableCount + " * Potion " + level;
     }
 }

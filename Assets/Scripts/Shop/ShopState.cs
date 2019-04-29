@@ -28,4 +28,9 @@ public class ShopState
     {
         return healingItemCounts[level - 1] > 0;
     }
+
+    public int GetHealingItemCount(int level)
+    {
+        return healingItemCounts[level - 1];
+    }
 }

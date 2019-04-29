@@ -92,6 +92,7 @@ public class ShopItem : MonoBehaviour
                 break;
             case ItemType.TheWoodenSword:
                 winScreen.gameObject.SetActive(true);
+                AudioManager.instance.Play("ig merchant buy freedom");
                 Debug.Log("You Won !");
                 break;
             case ItemType.Heal:

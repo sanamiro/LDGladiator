@@ -62,6 +62,7 @@ public class ShopController : MonoBehaviour
         if (selectedItem != null && selectedItem.Available && selectedItem.Price <= GameManager.PlayerMoney)
         {
             GameManager.SpendMoney(selectedItem.Price);
+            AudioManager.instance.Play("ig merchant buy item");
             selectedItem.OnBuy();
             items.ForEach(item => item.UpdateState(this));
             UpdatePlayerData();
@@ -69,6 +70,10 @@ public class ShopController : MonoBehaviour
                 Select(items[0]);
             /*selector.enabled = false;
             selector.enabled = true;*/
+        }
+        else if(selectedItem.Price > GameManager.PlayerMoney)
+        {
+            AudioManager.instance.Play("ig merchant not enought currency");
         }
     }
 
